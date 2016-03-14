@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data noupdate="0">
+        <record id="group_profiler_player" model="res.groups">
+            <field name="name">Profiling capability</field>
+        </record>
+        <record model="res.users" id="base.user_root">
+            <field name="groups_id" eval="[(4, ref('profiler.group_profiler_player'))]"/>
+        </record>
+
+        <template id="assets_backend" name="Profiler Asset Backend" inherit_id="web.assets_backend">
+            <xpath expr="." position="inside">
+                <link rel="stylesheet" href="/profiler/static/src/css/player.css"/>
+                <script type="text/javascript" src="/profiler/static/src/js/player.js"></script>
+            </xpath>
+        </template>
+
+    </data>
+</openerp>

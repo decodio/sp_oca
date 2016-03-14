@@ -1,0 +1,79 @@
+<templates>
+    <t t-name="ListViewMultiHeader.headerrow">
+        <t t-foreach="multiheader_columns[level]" t-as="column">
+            <th t-if="!column.meta and column.invisible !== '1' and column.tag !== 'group'" 
+                t-att-data-id="column.id"
+                t-att-rowspan="max_depth"
+                t-att-style="column.header_style"
+                t-att-class="column.header_class">
+                <div>
+                    <t t-if="column.tag !== 'button'">
+                        <t t-esc="column.string"/>
+                    </t>
+                </div>
+            </th>
+            <th t-if="column.tag == 'group'"
+                t-att-colspan="column.colspan"
+                t-att-style="column.header_style"
+                t-att-class="column.header_class">
+                <div>
+                    <t t-esc="column.string"/>
+                </div>
+            </th>
+        </t>
+    </t>
+    <tr t-name="ListViewMultiHeader.mainheader">
+        <tr t-if="options.header" class="oe_list_header_columns">
+            <t t-foreach="columns" t-as="column">
+                <th t-if="column.meta" 
+                    t-att-rowspan="max_depth"
+                    class="oe_multiheader-field">
+                    <t t-esc="column.string"/>
+                </th>
+            </t>
+            <th t-if="options.selectable" 
+                width="1" 
+                t-att-rowspan="max_depth"
+                class="oe_multiheader-field">
+                <input type="checkbox" class="oe_list_record_selector"/>
+            </th>
+            <t t-call="ListViewMultiHeader.headerrow"/>
+            <th t-if="options.deletable" 
+                class="oe_list_record_delete" 
+                width="13px" t-att-rowspan="max_depth"/>
+        </tr>
+    </tr>
+    <t t-name="ListViewMultiHeader.subheader">
+        <tr t-if="options.header" class="oe_list_header_columns">
+            <t t-call="ListViewMultiHeader.headerrow"/>
+        </tr>
+    </t>
+    <table t-name="ListViewMultiHeader" class="oe_list_content">
+        <t t-set="columns_count" t-value="visible_columns.length + (options.selectable ? 1 : 0) + (options.deletable ? 1 : 0)"/>
+        <thead>
+            <tr t-if="(!!options.action_buttons and !options.$buttons) or (!!options.pager and !options.$pager)">
+                <th t-att-colspan="columns_count">
+                    <div class="oe_list_buttons"/>
+                    <div class="oe_list_sidebar"/>
+                    <div class="oe_list_pager"/>
+                </th>
+            </tr>
+            <t t-foreach="levels" t-as="level">
+                <t t-set="max_depth" t-value="levels.length - level"/>
+                <t t-if="level == 0" 
+                    t-call="ListViewMultiHeader.mainheader"/>
+                <t t-if="level !== 0" 
+                    t-call="ListViewMultiHeader.subheader"/>
+            </t>
+        </thead>
+        <tfoot>
+            <tr>
+                <td t-if="options.selectable"/>
+                <td t-foreach="aggregate_columns" t-as="column" class="oe_list_footer oe_number"
+                    t-att-data-field="column.id" t-att-title="column.label">
+                </td>
+                <td t-if="options.deletable" class="oe_list_record_delete"/>
+            </tr>
+        </tfoot>
+    </table>
+</templates>

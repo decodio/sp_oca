@@ -4,12 +4,13 @@
 # 
 # Translators:
 # Paolo Valier, 2016
+# Paolo Valier, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: website (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-12 02:17+0000\n"
-"PO-Revision-Date: 2016-03-12 16:03+0000\n"
+"POT-Creation-Date: 2016-03-15 18:42+0000\n"
+"PO-Revision-Date: 2016-03-19 09:32+0000\n"
 "Last-Translator: Paolo Valier\n"
 "Language-Team: Italian (http://www.transifex.com/oca/OCA-website-8-0/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -21,7 +22,7 @@ msgstr ""
 #. module: website_portal
 #: view:website:website_portal.account
 msgid "Change"
-msgstr ""
+msgstr "Cambia"
 
 #. module: website_portal
 #: view:website:website_portal.details
@@ -61,7 +62,7 @@ msgstr "Nazione..."
 #. module: website_portal
 #: view:website:website_portal.account
 msgid "Custom Panel"
-msgstr ""
+msgstr "Pannello personalizzato"
 
 #. module: website_portal
 #: view:website:website_portal.details
@@ -82,7 +83,7 @@ msgstr "Email non valida! Prego inserire un indirizzo emil valido."
 #. module: website_portal
 #: view:website:website.layout
 msgid "Logout"
-msgstr ""
+msgstr "Esci"
 
 #. module: website_portal
 #: view:website:website.layout view:website:website_portal.details

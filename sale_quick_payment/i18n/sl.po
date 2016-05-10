@@ -3,13 +3,14 @@
 # * sale_quick_payment
 # 
 # Translators:
+# Ahmet Altınışık <aaltinisik@altinkaya.com.tr>, 2015
 # Matjaž Mozetič <m.mozetic@matmoz.si>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: sale-workflow (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-12 01:52+0000\n"
-"PO-Revision-Date: 2016-03-11 10:23+0000\n"
+"POT-Creation-Date: 2016-04-29 00:56+0000\n"
+"PO-Revision-Date: 2016-04-30 06:24+0000\n"
 "Last-Translator: Matjaž Mozetič <m.mozetic@matmoz.si>\n"
 "Language-Team: Slovenian (http://www.transifex.com/oca/OCA-sale-workflow-8-0/language/sl/)\n"
 "MIME-Version: 1.0\n"
@@ -50,6 +51,11 @@ msgid "Description"
 msgstr "Opis"
 
 #. module: sale_quick_payment
+#: field:pay.sale.order,display_name:0
+msgid "Display Name"
+msgstr "Prikazni naziv"
+
+#. module: sale_quick_payment
 #: field:pay.sale.order,id:0
 msgid "ID"
 msgstr "ID"
@@ -59,6 +65,11 @@ msgstr "ID"
 #: field:pay.sale.order,journal_id:0
 msgid "Journal"
 msgstr "Dnevnik"
+
+#. module: sale_quick_payment
+#: field:pay.sale.order,__last_update:0
+msgid "Last Modified on"
+msgstr "Zadnjič spremenjeno"
 
 #. module: sale_quick_payment
 #: field:pay.sale.order,write_uid:0

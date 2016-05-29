@@ -3,13 +3,23 @@
 # * super_calendar
 # 
 # Translators:
+# Ahmet Altınışık <aaltinisik@altinkaya.com.tr>, 2016
+# Ahmet Altınışık <aaltinisik@altinkaya.com.tr>, 2013
+# Antonio Trueba, 2016
+# Armando Vulcano Junior <vulcano@uol.com.br>, 2015
+# danimaribeiro <danimaribeiro@gmail.com>, 2016
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2012
+# Jarmo Kortetjärvi <jarmo.kortetjarvi@gmail.com>, 2016
+# Matjaž Mozetič <m.mozetic@matmoz.si>, 2015-2016
+# Paolo Valier, 2016
+# Rudolf Schnapka <rs@techno-flex.de>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: server-tools (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-01-19 14:44+0000\n"
-"PO-Revision-Date: 2015-09-18 13:56+0000\n"
-"Last-Translator: <>\n"
+"POT-Creation-Date: 2016-04-14 07:02+0000\n"
+"PO-Revision-Date: 2016-04-04 15:27+0000\n"
+"Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: Finnish (http://www.transifex.com/oca/OCA-server-tools-8-0/language/fi/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,7 +34,7 @@ msgstr ""
 #: view:super.calendar:super_calendar.super_calendar_form
 #: view:super.calendar:super_calendar.super_calendar_tree
 msgid "Calendar"
-msgstr ""
+msgstr "Kalenteri"
 
 #. module: super_calendar
 #: model:ir.actions.act_window,name:super_calendar.super_calendar_configurator

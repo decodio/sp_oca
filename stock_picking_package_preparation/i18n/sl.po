@@ -3,13 +3,14 @@
 # * stock_picking_package_preparation
 # 
 # Translators:
-# Matjaž Mozetič <m.mozetic@matmoz.si>, 2015
+# Matjaž Mozetič <m.mozetic@matmoz.si>, 2015-2016
+# Rudolf Schnapka <rs@techno-flex.de>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: stock-logistics-workflow (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-22 09:31+0000\n"
-"PO-Revision-Date: 2015-10-22 09:49+0000\n"
+"POT-Creation-Date: 2016-05-04 02:49+0000\n"
+"PO-Revision-Date: 2016-05-03 15:00+0000\n"
 "Last-Translator: Matjaž Mozetič <m.mozetic@matmoz.si>\n"
 "Language-Team: Slovenian (http://www.transifex.com/oca/OCA-stock-logistics-workflow-8-0/language/sl/)\n"
 "MIME-Version: 1.0\n"
@@ -31,6 +32,11 @@ msgstr "<p class=\"oe_view_nocontent_create\">\n          Priprava pakiranja.\n 
 #: view:stock.picking.package.preparation:stock_picking_package_preparation.stock_picking_package_preparation_form
 msgid "Add an internal note..."
 msgstr "Dodaj interno opombo..."
+
+#. module: stock_picking_package_preparation
+#: field:stock.picking.package.preparation,quant_ids:0
+msgid "All Content"
+msgstr "Vsa vsebina"
 
 #. module: stock_picking_package_preparation
 #: code:addons/stock_picking_package_preparation/model/stock_picking_package_preparation.py:220
@@ -79,6 +85,11 @@ msgstr "Ustvarjeno"
 #: help:stock.picking.package.preparation,message_last_post:0
 msgid "Date of the last message posted on the record."
 msgstr "Datum zadnjega sporočila objavljenega na zapisu."
+
+#. module: stock_picking_package_preparation
+#: field:stock.picking.package.preparation,display_name:0
+msgid "Display Name"
+msgstr "Prikazni naziv"
 
 #. module: stock_picking_package_preparation
 #: field:stock.picking.package.preparation,date:0
@@ -141,6 +152,11 @@ msgid "Last Message Date"
 msgstr "Datum zadnjega sporočila"
 
 #. module: stock_picking_package_preparation
+#: field:stock.picking.package.preparation,__last_update:0
+msgid "Last Modified on"
+msgstr "Zadnjič spremenjeno"
+
+#. module: stock_picking_package_preparation
 #: field:stock.picking.package.preparation,write_uid:0
 msgid "Last Updated by"
 msgstr "Zadnji posodobil"
@@ -164,6 +180,11 @@ msgstr "Sporočila"
 #: help:stock.picking.package.preparation,message_ids:0
 msgid "Messages and communication history"
 msgstr "Sporočila in kronologija komunikacij"
+
+#. module: stock_picking_package_preparation
+#: field:stock.picking.package.preparation,net_weight:0
+msgid "Net weight"
+msgstr "Neto masa"
 
 #. module: stock_picking_package_preparation
 #: code:addons/stock_picking_package_preparation/model/stock_picking_package_preparation.py:197
@@ -191,6 +212,11 @@ msgstr "Operacije"
 #: field:stock.picking.package.preparation,package_id:0
 msgid "Pack"
 msgstr "Pakiranje"
+
+#. module: stock_picking_package_preparation
+#: field:stock.picking.package.preparation,pack_operation_ids:0
+msgid "Pack operation ids"
+msgstr "ID-ji operacij pakiranja"
 
 #. module: stock_picking_package_preparation
 #: model:ir.model,name:stock_picking_package_preparation.model_stock_picking_package_preparation
@@ -257,6 +283,12 @@ msgid "The package has not been generated."
 msgstr "Pakiranje ni bilo ustvarjeno."
 
 #. module: stock_picking_package_preparation
+#: help:stock.picking.package.preparation,net_weight:0
+#: help:stock.picking.package.preparation,weight:0
+msgid "The weight is computed when the preparation is done."
+msgstr "Masa se izračuna potem, ko se priprava opravi."
+
+#. module: stock_picking_package_preparation
 #: view:stock.picking.package.preparation:stock_picking_package_preparation.stock_picking_package_preparation_form
 #: field:stock.picking.package.preparation,picking_ids:0
 msgid "Transfers"
@@ -266,3 +298,8 @@ msgstr "Premestitve"
 #: field:stock.picking.package.preparation,message_unread:0
 msgid "Unread Messages"
 msgstr "Neprebrana sporočila"
+
+#. module: stock_picking_package_preparation
+#: field:stock.picking.package.preparation,weight:0
+msgid "Weight"
+msgstr "Masa"

@@ -3,13 +3,23 @@
 # * purchase_requisition_bid_selection
 # 
 # Translators:
-# Matjaž Mozetič <m.mozetic@matmoz.si>, 2016
+# Ahmet Altınışık <aaltinisik@altinkaya.com.tr>, 2016
+# Carles Antoli <carlesantoli@hotmail.com>, 2016
+# Christophe CHAUVET <christophe.chauvet@gmail.com>, 2015
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2012
+# Kostas Goutoudis <goutoudis@gmail.com>, 2015
+# Matjaž Mozetič <m.mozetic@matmoz.si>, 2015-2016
+# Paolo Valier, 2016
+# Pedro Castro Silva <pedrocs@sossia.pt>, 2015
+# Pedro M. Baeza <pedro.baeza@gmail.com>, 2015
+# Rudolf Schnapka <rs@techno-flex.de>, 2016
+# SaFi J. <safi2266@gmail.com>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: purchase-workflow (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-08 10:16+0000\n"
-"PO-Revision-Date: 2016-03-10 06:10+0000\n"
+"POT-Creation-Date: 2016-05-14 02:43+0000\n"
+"PO-Revision-Date: 2016-05-12 05:26+0000\n"
 "Last-Translator: Matjaž Mozetič <m.mozetic@matmoz.si>\n"
 "Language-Team: Slovenian (http://www.transifex.com/oca/OCA-purchase-workflow-8-0/language/sl/)\n"
 "MIME-Version: 1.0\n"
@@ -216,6 +226,7 @@ msgstr "Potrditev"
 
 #. module: purchase_requisition_bid_selection
 #: field:purchase.order,country_of_origin:0
+#: field:purchase.order.line,country_of_origin:0
 #: view:website:purchase_requisition_bid_selection.report_purchaserequisitions_document
 msgid "Country of origin"
 msgstr "Država porekla"
@@ -280,6 +291,14 @@ msgstr "Dobava obljubljena (incoterms + destinacija)"
 #: view:website:purchase_requisition_bid_selection.report_purchaserequisitions_document
 msgid "Description of item"
 msgstr "Opis predmeta"
+
+#. module: purchase_requisition_bid_selection
+#: field:purchase.action_modal.ask_selection_reasons,display_name:0
+#: field:purchase.action_modal.ask_validity,display_name:0
+#: field:update.bid.internal.remark,display_name:0
+#: field:update.remark,display_name:0
+msgid "Display Name"
+msgstr "Prikazni naziv"
 
 #. module: purchase_requisition_bid_selection
 #: view:purchase.order.line:purchase_requisition_bid_selection.view_purchase_order_line_search
@@ -361,6 +380,18 @@ msgid ""
 msgstr "Incoterm lokacija dobave. Mednarodni komercialni termini \"incoterms\" so zbirka terminov v uporabi pri mednarodnih transakcijah."
 
 #. module: purchase_requisition_bid_selection
+#: help:purchase.order.line,incoterm_address:0
+msgid ""
+"Incoterms Place of Delivery. International Commercial Terms are a series of "
+"predefined commercial terms used in international transactions."
+msgstr "Incoterm lokacija dobave. Mednarodni komercialni termini \"incoterms\" so zbirka terminov v uporabi pri mednarodnih transakcijah."
+
+#. module: purchase_requisition_bid_selection
+#: field:purchase.order.line,incoterm_address:0
+msgid "Incoterms place"
+msgstr "Incoterms lokacija"
+
+#. module: purchase_requisition_bid_selection
 #: view:website:purchase_requisition_bid_selection.report_purchaserequisitions_document
 msgid "Informations"
 msgstr "Informacije"
@@ -382,6 +413,14 @@ msgid ""
 "International Commercial Terms are a series of predefined commercial terms "
 "used in international transactions."
 msgstr "Mednarodni komercialni termini \"incoterms\" so zbirka terminov v uporabi pri mednarodnih transakcijah."
+
+#. module: purchase_requisition_bid_selection
+#: field:purchase.action_modal.ask_selection_reasons,__last_update:0
+#: field:purchase.action_modal.ask_validity,__last_update:0
+#: field:update.bid.internal.remark,__last_update:0
+#: field:update.remark,__last_update:0
+msgid "Last Modified on"
+msgstr "Zadnjič spremenjeno"
 
 #. module: purchase_requisition_bid_selection
 #: field:purchase.action_modal.ask_selection_reasons,write_uid:0
@@ -446,6 +485,11 @@ msgstr "Odprt"
 #: view:purchase.requisition:purchase_requisition_bid_selection.view_purchase_requisition_form
 msgid "Options"
 msgstr "Možnosti"
+
+#. module: purchase_requisition_bid_selection
+#: field:purchase.order.line,payment_term_id:0
+msgid "Payment Term"
+msgstr "Plačilni pogoj"
 
 #. module: purchase_requisition_bid_selection
 #: view:website:purchase_requisition_bid_selection.report_purchaserequisitions_document
@@ -666,6 +710,7 @@ msgstr "Pojmi in pogoji..."
 
 #. module: purchase_requisition_bid_selection
 #: field:purchase.order,terms_of_payment:0
+#: field:purchase.order.line,terms_of_payment:0
 #: view:website:purchase_requisition_bid_selection.report_purchaserequisitions_document
 msgid "Terms of payment"
 msgstr "Plačilni pogoji"

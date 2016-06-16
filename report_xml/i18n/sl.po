@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: reporting-engine (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-11 15:45+0000\n"
-"PO-Revision-Date: 2016-03-12 06:39+0000\n"
+"POT-Creation-Date: 2016-05-04 02:44+0000\n"
+"PO-Revision-Date: 2016-05-03 15:03+0000\n"
 "Last-Translator: Matjaž Mozetič <m.mozetic@matmoz.si>\n"
 "Language-Team: Slovenian (http://www.transifex.com/oca/OCA-reporting-engine-8-0/language/sl/)\n"
 "MIME-Version: 1.0\n"
@@ -24,9 +24,19 @@ msgid "Base model for reports that need XSD checking"
 msgstr "Osnovni model poročil, ki se preverjajo z XSD"
 
 #. module: report_xml
+#: field:report_xml.xsd_checked_report,display_name:0
+msgid "Display Name"
+msgstr "Prikazni naziv"
+
+#. module: report_xml
 #: field:report_xml.xsd_checked_report,id:0
 msgid "ID"
 msgstr "ID"
+
+#. module: report_xml
+#: field:report_xml.xsd_checked_report,__last_update:0
+msgid "Last Modified on"
+msgstr "Zadnjič spremenjeno"
 
 #. module: report_xml
 #: model:ir.model,name:report_xml.model_report

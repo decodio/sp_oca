@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: stock-logistics-workflow (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-22 09:32+0000\n"
-"PO-Revision-Date: 2015-10-22 04:16+0000\n"
+"POT-Creation-Date: 2016-05-04 02:49+0000\n"
+"PO-Revision-Date: 2016-05-03 15:02+0000\n"
 "Last-Translator: Matjaž Mozetič <m.mozetic@matmoz.si>\n"
 "Language-Team: Slovenian (http://www.transifex.com/oca/OCA-stock-logistics-workflow-8-0/language/sl/)\n"
 "MIME-Version: 1.0\n"
@@ -34,9 +34,19 @@ msgid "Created on"
 msgstr "Ustvarjeno"
 
 #. module: stock_transfer_split_multi
+#: field:stock.transfer.split.multi,display_name:0
+msgid "Display Name"
+msgstr "Prikazni naziv"
+
+#. module: stock_transfer_split_multi
 #: field:stock.transfer.split.multi,id:0
 msgid "ID"
 msgstr "ID"
+
+#. module: stock_transfer_split_multi
+#: field:stock.transfer.split.multi,__last_update:0
+msgid "Last Modified on"
+msgstr "Zadnjič spremenjeno"
 
 #. module: stock_transfer_split_multi
 #: field:stock.transfer.split.multi,write_uid:0

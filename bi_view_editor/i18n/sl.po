@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: reporting-engine (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-22 01:40+0000\n"
-"PO-Revision-Date: 2016-03-22 05:39+0000\n"
+"POT-Creation-Date: 2016-05-04 02:44+0000\n"
+"PO-Revision-Date: 2016-05-03 15:03+0000\n"
 "Last-Translator: Matjaž Mozetič <m.mozetic@matmoz.si>\n"
 "Language-Team: Slovenian (http://www.transifex.com/oca/OCA-reporting-engine-8-0/language/sl/)\n"
 "MIME-Version: 1.0\n"
@@ -86,6 +86,11 @@ msgid "Data"
 msgstr "Podatki"
 
 #. module: bi_view_editor
+#: field:bve.view,display_name:0
+msgid "Display Name"
+msgstr "Prikazni naziv"
+
+#. module: bi_view_editor
 #: selection:bve.view,state:0
 msgid "Draft"
 msgstr "Osnutek"
@@ -110,6 +115,11 @@ msgstr "Skupine"
 #: field:bve.view,id:0
 msgid "ID"
 msgstr "ID"
+
+#. module: bi_view_editor
+#: field:bve.view,__last_update:0
+msgid "Last Modified on"
+msgstr "Zadnjič spremenjeno"
 
 #. module: bi_view_editor
 #: field:bve.view,write_uid:0

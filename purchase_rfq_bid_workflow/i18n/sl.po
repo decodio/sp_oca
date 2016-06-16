@@ -3,13 +3,23 @@
 # * purchase_rfq_bid_workflow
 # 
 # Translators:
-# Matjaž Mozetič <m.mozetic@matmoz.si>, 2016
+# Antonio Trueba, 2016
+# Armando Vulcano Junior <vulcano@uol.com.br>, 2015
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2010,2012,2014
+# Hotellook, 2014
+# Jarmo Kortetjärvi <jarmo.kortetjarvi@gmail.com>, 2016
+# Matjaž Mozetič <m.mozetic@matmoz.si>, 2015-2016
+# Paolo Valier, 2016
+# Pedro M. Baeza <pedro.baeza@gmail.com>, 2015
+# Rudolf Schnapka <rs@techno-flex.de>, 2015-2016
+# Rudolf Schnapka <schnapkar@golive-saar.de>, 2015
+# SaFi J. <safi2266@gmail.com>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: purchase-workflow (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-08 10:16+0000\n"
-"PO-Revision-Date: 2016-03-09 09:44+0000\n"
+"POT-Creation-Date: 2016-05-14 02:43+0000\n"
+"PO-Revision-Date: 2016-05-12 05:26+0000\n"
 "Last-Translator: Matjaž Mozetič <m.mozetic@matmoz.si>\n"
 "Language-Team: Slovenian (http://www.transifex.com/oca/OCA-purchase-workflow-8-0/language/sl/)\n"
 "MIME-Version: 1.0\n"
@@ -96,6 +106,14 @@ msgid "Date"
 msgstr "Datum"
 
 #. module: purchase_rfq_bid_workflow
+#: field:purchase.action_modal,display_name:0
+#: field:purchase.action_modal.cancel_reason,display_name:0
+#: field:purchase.action_modal.datetime,display_name:0
+#: field:purchase.cancel_reason,display_name:0
+msgid "Display Name"
+msgstr "Prikazni naziv"
+
+#. module: purchase_rfq_bid_workflow
 #: code:addons/purchase_rfq_bid_workflow/model/purchase_order.py:281
 #: code:addons/purchase_rfq_bid_workflow/model/purchase_order.py:290
 #, python-format
@@ -120,6 +138,14 @@ msgid ""
 "Incoterms Place of Delivery. International Commercial Terms are a series of "
 "predefined commercial terms used in international transactions."
 msgstr "Incoterm lokacija dobave. Mednarodni komercialni termini \"incoterms\" so zbirka terminov v uporabi pri mednarodnih transakcijah."
+
+#. module: purchase_rfq_bid_workflow
+#: field:purchase.action_modal,__last_update:0
+#: field:purchase.action_modal.cancel_reason,__last_update:0
+#: field:purchase.action_modal.datetime,__last_update:0
+#: field:purchase.cancel_reason,__last_update:0
+msgid "Last Modified on"
+msgstr "Zadnjič spremenjeno"
 
 #. module: purchase_rfq_bid_workflow
 #: field:purchase.action_modal,write_uid:0

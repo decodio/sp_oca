@@ -1,57 +1,58 @@
 # Translation of Odoo Server.
 # This file contains the translation of the following modules:
-#	* website_sale_require_legal
-#
+# * website_sale_require_legal
+# 
+# Translators:
 msgid ""
 msgstr ""
-"Project-Id-Version: Odoo Server 8.0\n"
+"Project-Id-Version: e-commerce (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-06 12:54+0000\n"
-"PO-Revision-Date: 2016-05-06 12:54+0000\n"
-"Last-Translator: <>\n"
-"Language-Team: \n"
+"POT-Creation-Date: 2016-03-29 10:29+0000\n"
+"PO-Revision-Date: 2016-03-29 10:29+0000\n"
+"Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
+"Language-Team: English (http://www.transifex.com/oca/OCA-e-commerce-8-0/language/en/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
-"Plural-Forms: \n"
+"Language: en\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #. module: website_sale_require_legal
 #: view:website:website_sale.checkout
 msgid ", the"
-msgstr ", la"
+msgstr ", the"
 
 #. module: website_sale_require_legal
 #: view:website:website_sale.checkout
 msgid "Confirm"
-msgstr "Confirmar"
+msgstr "Confirm"
 
 #. module: website_sale_require_legal
 #: view:website:website_sale.checkout
 msgid "I accept the"
-msgstr "Acepto el"
+msgstr "I accept the"
 
 #. module: website_sale_require_legal
 #: view:website:website_sale.checkout
 msgid "and the"
-msgstr "y los"
+msgstr "and the"
 
 #. module: website_sale_require_legal
 #: view:website:website_sale.checkout
 msgid "legal advice"
-msgstr "aviso legal"
+msgstr "legal advice"
 
 #. module: website_sale_require_legal
 #: view:website:website_sale.checkout
 msgid "of this website."
-msgstr "de este sitio web."
+msgstr "of this website."
 
 #. module: website_sale_require_legal
 #: view:website:website_sale.checkout
 msgid "privacy policy"
-msgstr "política de privacidad"
+msgstr "privacy policy"
 
 #. module: website_sale_require_legal
 #: view:website:website_sale.checkout
 msgid "terms of use"
-msgstr "términos de uso"
-
+msgstr "terms of use"

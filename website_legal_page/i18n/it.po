@@ -4,12 +4,13 @@
 # 
 # Translators:
 # Paolo Valier, 2016
+# Paolo Valier, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: website (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-12 02:17+0000\n"
-"PO-Revision-Date: 2016-03-11 09:10+0000\n"
+"POT-Creation-Date: 2016-03-15 18:42+0000\n"
+"PO-Revision-Date: 2016-03-19 09:30+0000\n"
 "Last-Translator: Paolo Valier\n"
 "Language-Team: Italian (http://www.transifex.com/oca/OCA-website-8-0/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -17,6 +18,16 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#. module: website_legal_page
+#: view:website:website_legal_page.acceptance_full
+msgid ", and the"
+msgstr ", e le"
+
+#. module: website_legal_page
+#: view:website:website_legal_page.acceptance_full
+msgid ", the"
+msgstr ", l'"
 
 #. module: website_legal_page
 #: view:website:website.layout
@@ -32,3 +43,23 @@ msgstr "Informativa sulla Privacy"
 #: view:website:website.layout
 msgid "Terms of use"
 msgstr "Condizioni d'uso"
+
+#. module: website_legal_page
+#: view:website:website_legal_page.acceptance_full
+msgid "legal advice"
+msgstr "informazioni legali"
+
+#. module: website_legal_page
+#: view:website:website_legal_page.acceptance_full
+msgid "of this website."
+msgstr "di questo sito."
+
+#. module: website_legal_page
+#: view:website:website_legal_page.acceptance_full
+msgid "privacy policy"
+msgstr "informativa sulla privacy"
+
+#. module: website_legal_page
+#: view:website:website_legal_page.acceptance_full
+msgid "terms of use"
+msgstr "condizioni d'uso"

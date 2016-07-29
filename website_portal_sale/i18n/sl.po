@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: website (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-12 02:17+0000\n"
-"PO-Revision-Date: 2016-03-02 06:54+0000\n"
+"POT-Creation-Date: 2016-03-15 18:42+0000\n"
+"PO-Revision-Date: 2016-03-15 05:54+0000\n"
 "Last-Translator: Matjaž Mozetič <m.mozetic@matmoz.si>\n"
 "Language-Team: Slovenian (http://www.transifex.com/oca/OCA-website-8-0/language/sl/)\n"
 "MIME-Version: 1.0\n"
@@ -42,6 +42,11 @@ msgstr "Stik"
 #: view:website:website_portal_sale.orders_followup
 msgid "Date:"
 msgstr "Datum:"
+
+#. module: website_portal_sale
+#: view:website:website_portal_sale.orders_followup
+msgid "Discount (%)"
+msgstr "Popust (%)"
 
 #. module: website_portal_sale
 #: view:website:website_portal_sale.sale_orders

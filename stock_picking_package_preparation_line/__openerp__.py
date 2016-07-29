@@ -28,13 +28,16 @@
     'license': 'AGPL-3',
     'category': 'Warehouse Management',
     'depends': [
+        'stock',
         'product',
         'stock_picking_package_preparation',
     ],
     'website': 'http://www.apuliasoftware.it',
     'data': [
+        'views/ir_config_view.xml',
         'views/stock_picking_package_preparation_line.xml',
         'security/ir.model.access.csv',
+        'security/package_preparation_line_security.xml',
     ],
     'installable': True,
     'auto_install': False,

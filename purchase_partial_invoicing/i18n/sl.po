@@ -3,13 +3,23 @@
 # * purchase_partial_invoicing
 # 
 # Translators:
-# Matjaž Mozetič <m.mozetic@matmoz.si>, 2016
+# Antonio Trueba, 2016
+# Carles Antoli <carlesantoli@hotmail.com>, 2015
+# danimaribeiro <danimaribeiro@gmail.com>, 2016
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2010,2012,2014
+# Giacomo <giacomo.spettoli@gmail.com>, 2015
+# Giedrius Slavinskas <giedrius@inovera.lt>, 2012
+# Hotellook, 2014
+# Matjaž Mozetič <m.mozetic@matmoz.si>, 2015-2016
+# Paolo Valier, 2016
+# Pedro M. Baeza <pedro.baeza@gmail.com>, 2015
+# Rudolf Schnapka <rs@techno-flex.de>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: purchase-workflow (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-08 10:16+0000\n"
-"PO-Revision-Date: 2016-03-08 12:06+0000\n"
+"POT-Creation-Date: 2016-05-14 02:43+0000\n"
+"PO-Revision-Date: 2016-05-12 05:25+0000\n"
 "Last-Translator: Matjaž Mozetič <m.mozetic@matmoz.si>\n"
 "Language-Team: Slovenian (http://www.transifex.com/oca/OCA-purchase-workflow-8-0/language/sl/)\n"
 "MIME-Version: 1.0\n"
@@ -17,6 +27,11 @@ msgstr ""
 "Content-Transfer-Encoding: \n"
 "Language: sl\n"
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
+
+#. module: purchase_partial_invoicing
+#: field:purchase.order.line,all_invoices_approved:0
+msgid "All invoices approved"
+msgstr "Vsi računi odobreni"
 
 #. module: purchase_partial_invoicing
 #: view:purchase.order.line_cancel_quantity:purchase_partial_invoicing.view_purchase_line_cancel
@@ -53,6 +68,13 @@ msgid "Created on"
 msgstr "Ustvarjeno"
 
 #. module: purchase_partial_invoicing
+#: field:purchase.order.line_cancel_quantity,display_name:0
+#: field:purchase.order.line_cancel_quantity_line,display_name:0
+#: field:purchase.order.line_invoice.line,display_name:0
+msgid "Display Name"
+msgstr "Prikazni naziv"
+
+#. module: purchase_partial_invoicing
 #: view:purchase.order.line_cancel_quantity:purchase_partial_invoicing.view_purchase_line_cancel
 msgid "Do you want to cancel some quantity to invoice ?"
 msgstr "Želite preklicati določeno obračunsko količino?"
@@ -83,6 +105,13 @@ msgstr "Zaračunana kol."
 #: view:purchase.order.line:purchase_partial_invoicing.purchase_order_line_search
 msgid "Invoicing"
 msgstr "Obračun"
+
+#. module: purchase_partial_invoicing
+#: field:purchase.order.line_cancel_quantity,__last_update:0
+#: field:purchase.order.line_cancel_quantity_line,__last_update:0
+#: field:purchase.order.line_invoice.line,__last_update:0
+msgid "Last Modified on"
+msgstr "Zadnjič spremenjeno"
 
 #. module: purchase_partial_invoicing
 #: field:purchase.order.line_cancel_quantity,write_uid:0
@@ -174,6 +203,12 @@ msgstr "Količina za obračun je večja od\n                    razpoložljive k
 #: view:purchase.order.line_cancel_quantity:purchase_partial_invoicing.view_purchase_line_cancel
 msgid "Select an Open Sales Order"
 msgstr "Izberite odprt prodajni nalog"
+
+#. module: purchase_partial_invoicing
+#: field:purchase.order.line_cancel_quantity_line,price_unit:0
+#: field:purchase.order.line_invoice.line,price_unit:0
+msgid "Unit Price"
+msgstr "Cena enote"
 
 #. module: purchase_partial_invoicing
 #: view:purchase.order.line:purchase_partial_invoicing.purchase_order_line_search

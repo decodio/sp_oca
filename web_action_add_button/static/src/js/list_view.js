@@ -3,7 +3,7 @@ openerp.web_action_add_button = function (instance) {
     instance.web.Sidebar.include({
         init: function(parent) {
             this._super(parent);
-            this.items['web_action_add_button'] = [];
+            this.items.web_action_add_button = [];
         },
     });
     instance.web.ListView.include({
@@ -40,8 +40,8 @@ openerp.web_action_add_button = function (instance) {
                 action_buttons_with_menu: this.action_buttons_with_menu,
             });
             this.$action_buttons_with_menu = $(el);
-            sidebar = this.ViewManager.$el.find('.oe_view_manager_sidebar');
-            this.$action_buttons_with_menu.insertAfter(sidebar);
+            var sidebar = this.ViewManager.$el.find('.oe_view_manager_sidebar')[0];
+            this.$action_buttons_with_menu.insertAfter($(sidebar));
             function buttonclicked (){
                 var section = $(this).data('section');
                 var index = $(this).data('index');
@@ -67,7 +67,7 @@ openerp.web_action_add_button = function (instance) {
                     });
                 }
                 _(items[item]).each(function(action) {
-                    self.sidebar.items['web_action_add_button'][action.id] = action;
+                    self.sidebar.items.web_action_add_button[action.id] = action;
                 });
             });
         },

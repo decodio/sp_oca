@@ -8,7 +8,7 @@
     <field name="name">mail.tracking.event.form</field>
     <field name="model">mail.tracking.event</field>
     <field name="arch" type="xml">
-        <form string="MailTracking event">
+        <form string="MailTracking event" create="false" edit="false" delete="false">
             <sheet>
                 <group>
                     <group>
@@ -41,6 +41,12 @@
                         <field name="os_family"/>
                     </group>
                 </group>
+                <group string="Error"
+                       attrs="{'invisible': [('error_type', '=', False)]}">
+                    <field name="error_type"/>
+                    <field name="error_description"/>
+                    <field name="error_details"/>
+                </group>
             </sheet>
         </form>
     </field>
@@ -50,7 +56,8 @@
     <field name="name">mail.tracking.event.tree</field>
     <field name="model">mail.tracking.event</field>
     <field name="arch" type="xml">
-        <tree string="MailTracking events" colors="grey:event_type in ('deferral',);black:event_type in ('sent', 'delivered');red:event_type in ('hard_bounce', 'soft_bounce', 'spam', 'reject');blue:event_type in ('unsub', 'click', 'open')">
+        <tree string="MailTracking events" create="false" edit="false" delete="false"
+              colors="grey:event_type in ('deferral',);black:event_type in ('sent', 'delivered');red:event_type in ('hard_bounce', 'soft_bounce', 'spam', 'reject');blue:event_type in ('unsub', 'click', 'open')">
             <field name="time"/>
             <field name="tracking_email_id"/>
             <field name="recipient"/>

@@ -15,13 +15,18 @@ class ResPartner(models.Model):
         string="Tracking emails count", store=True, readonly=True,
         compute="_compute_tracking_emails_count")
     email_score = fields.Float(
-        string="Email score",
-        compute="_compute_email_score", store=True, readonly=True)
+        string="Email score", readonly=True, default=50.0)
 
-    @api.one
-    @api.depends('tracking_email_ids.state')
-    def _compute_email_score(self):
-        self.email_score = self.tracking_email_ids.email_score()
+    @api.multi
+    def email_score_calculate(self):
+        # This is not a compute method because is causing a inter-block
+        # in mail_tracking_email PostgreSQL table
+        # We suspect that tracking_email write to state field block that
+        # table and then inside write ORM try to read from DB
+        # tracking_email_ids because it's not in cache.
+        # PostgreSQL blocks read because we have not committed yet the write
+        for partner in self:
+            partner.email_score = partner.tracking_email_ids.email_score()
 
     @api.one
     @api.depends('tracking_email_ids')
@@ -35,6 +40,7 @@ class ResPartner(models.Model):
     def write(self, vals):
         email = vals.get('email')
         if email is not None:
-            vals['tracking_email_ids'] = \
-                self.env['mail.tracking.email']._tracking_ids_to_write(email)
+            m_track = self.env['mail.tracking.email']
+            vals['tracking_email_ids'] = m_track._tracking_ids_to_write(email)
+            vals['email_score'] = m_track.email_score_from_email(email)
         return super(ResPartner, self).write(vals)

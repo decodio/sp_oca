@@ -4,9 +4,9 @@
 
 import mock
 import base64
+import time
 from openerp.tests.common import TransactionCase
-from openerp.addons.mail_tracking.controllers.main import \
-    MailTrackingController, BLANK
+from ..controllers.main import MailTrackingController, BLANK
 
 mock_request = 'openerp.http.request'
 mock_send_email = ('openerp.addons.base.ir.ir_mail_server.'
@@ -88,11 +88,11 @@ class TestMailTracking(TransactionCase):
         tracking_email.event_create('open', metadata)
         self.assertEqual(tracking_email.state, 'opened')
 
-    def mail_send(self):
+    def mail_send(self, recipient):
         mail = self.env['mail.mail'].create({
             'subject': 'Test subject',
             'email_from': 'from@domain.com',
-            'email_to': 'to@domain.com',
+            'email_to': recipient,
             'body_html': '<p>This is a test message</p>',
         })
         mail.send()
@@ -106,7 +106,7 @@ class TestMailTracking(TransactionCase):
         controller = MailTrackingController()
         db = self.env.cr.dbname
         image = base64.decodestring(BLANK)
-        mail, tracking = self.mail_send()
+        mail, tracking = self.mail_send(self.recipient.email)
         self.assertEqual(mail.email_to, tracking.recipient)
         self.assertEqual(mail.email_from, tracking.sender)
         with mock.patch(mock_request) as mock_func:
@@ -114,13 +114,139 @@ class TestMailTracking(TransactionCase):
             res = controller.mail_tracking_open(db, tracking.id)
             self.assertEqual(image, res.response[0])
 
+    def test_concurrent_open(self):
+        mail, tracking = self.mail_send(self.recipient.email)
+        ts = time.time()
+        metadata = {
+            'ip': '127.0.0.1',
+            'user_agent': 'Odoo Test/1.0',
+            'os_family': 'linux',
+            'ua_family': 'odoo',
+            'timestamp': ts,
+        }
+        # First open event
+        tracking.event_create('open', metadata)
+        opens = tracking.tracking_event_ids.filtered(
+            lambda r: r.event_type == 'open'
+        )
+        self.assertEqual(len(opens), 1)
+        # Concurrent open event
+        metadata['timestamp'] = ts + 2
+        tracking.event_create('open', metadata)
+        opens = tracking.tracking_event_ids.filtered(
+            lambda r: r.event_type == 'open'
+        )
+        self.assertEqual(len(opens), 1)
+        # Second open event
+        metadata['timestamp'] = ts + 350
+        tracking.event_create('open', metadata)
+        opens = tracking.tracking_event_ids.filtered(
+            lambda r: r.event_type == 'open'
+        )
+        self.assertEqual(len(opens), 2)
+
+    def test_concurrent_click(self):
+        mail, tracking = self.mail_send(self.recipient.email)
+        ts = time.time()
+        metadata = {
+            'ip': '127.0.0.1',
+            'user_agent': 'Odoo Test/1.0',
+            'os_family': 'linux',
+            'ua_family': 'odoo',
+            'timestamp': ts,
+            'url': 'https://www.example.com/route/1',
+        }
+        # First click event (URL 1)
+        tracking.event_create('click', metadata)
+        opens = tracking.tracking_event_ids.filtered(
+            lambda r: r.event_type == 'click'
+        )
+        self.assertEqual(len(opens), 1)
+        # Concurrent click event (URL 1)
+        metadata['timestamp'] = ts + 2
+        tracking.event_create('click', metadata)
+        opens = tracking.tracking_event_ids.filtered(
+            lambda r: r.event_type == 'click'
+        )
+        self.assertEqual(len(opens), 1)
+        # Second click event (URL 1)
+        metadata['timestamp'] = ts + 350
+        tracking.event_create('click', metadata)
+        opens = tracking.tracking_event_ids.filtered(
+            lambda r: r.event_type == 'click'
+        )
+        self.assertEqual(len(opens), 2)
+        # Concurrent click event (URL 2)
+        metadata['timestamp'] = ts + 2
+        metadata['url'] = 'https://www.example.com/route/2'
+        tracking.event_create('click', metadata)
+        opens = tracking.tracking_event_ids.filtered(
+            lambda r: r.event_type == 'click'
+        )
+        self.assertEqual(len(opens), 3)
+
     def test_smtp_error(self):
         with mock.patch(mock_send_email) as mock_func:
             mock_func.side_effect = Warning('Test error')
-            mail, tracking = self.mail_send()
+            mail, tracking = self.mail_send(self.recipient.email)
             self.assertEqual('error', tracking.state)
             self.assertEqual('Warning', tracking.error_type)
             self.assertEqual('Test error', tracking.error_description)
+
+    def test_partner_email_change(self):
+        mail, tracking = self.mail_send(self.recipient.email)
+        tracking.event_create('open', {})
+        orig_score = self.recipient.email_score
+        orig_email = self.recipient.email
+        self.recipient.email = orig_email + '2'
+        self.assertEqual(50.0, self.recipient.email_score)
+        self.recipient.email = orig_email
+        self.assertEqual(orig_score, self.recipient.email_score)
+
+    def test_process_hard_bounce(self):
+        mail, tracking = self.mail_send(self.recipient.email)
+        tracking.event_create('hard_bounce', {})
+        self.assertEqual('bounced', tracking.state)
+
+    def test_process_soft_bounce(self):
+        mail, tracking = self.mail_send(self.recipient.email)
+        tracking.event_create('soft_bounce', {})
+        self.assertEqual('soft-bounced', tracking.state)
+
+    def test_process_delivered(self):
+        mail, tracking = self.mail_send(self.recipient.email)
+        tracking.event_create('delivered', {})
+        self.assertEqual('delivered', tracking.state)
+
+    def test_process_deferral(self):
+        mail, tracking = self.mail_send(self.recipient.email)
+        tracking.event_create('deferral', {})
+        self.assertEqual('deferred', tracking.state)
+
+    def test_process_spam(self):
+        mail, tracking = self.mail_send(self.recipient.email)
+        tracking.event_create('spam', {})
+        self.assertEqual('spam', tracking.state)
+
+    def test_process_unsub(self):
+        mail, tracking = self.mail_send(self.recipient.email)
+        tracking.event_create('unsub', {})
+        self.assertEqual('unsub', tracking.state)
+
+    def test_process_reject(self):
+        mail, tracking = self.mail_send(self.recipient.email)
+        tracking.event_create('reject', {})
+        self.assertEqual('rejected', tracking.state)
+
+    def test_process_open(self):
+        mail, tracking = self.mail_send(self.recipient.email)
+        tracking.event_create('open', {})
+        self.assertEqual('opened', tracking.state)
+
+    def test_process_click(self):
+        mail, tracking = self.mail_send(self.recipient.email)
+        tracking.event_create('click', {})
+        self.assertEqual('opened', tracking.state)
 
     def test_db(self):
         db = self.env.cr.dbname

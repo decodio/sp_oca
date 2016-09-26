@@ -6,12 +6,12 @@
 
 {
     'name': 'Sales commissions',
-    'version': '8.0.2.4.0',
+    'version': '8.0.3.0.0',
     'author': 'Pexego, '
               'Savoire-faire linux, '
               'Avanzosc, '
               'Abstract, '
-              'Serv. Tecnol. Avanzados - Pedro M. Baeza, '
+              'Tecnativa, '
               'Odoo Community Association (OCA)',
     "category": "Sales Management",
     'license': 'AGPL-3',
@@ -34,6 +34,7 @@
         "Iván Todorovich <ivan.todorovich@gmail.com",
     ],
     "data": [
+        "security/commission_security.xml",
         "security/ir.model.access.csv",
         "views/product_template_view.xml",
         "views/res_partner_view.xml",
@@ -51,5 +52,6 @@
     'test': [
         'test/sale_commission_demo.yml',
     ],
-    "installable": True
+    "installable": True,
+    "pre_init_hook": "set_commission_total",
 }

@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: carrier-delivery (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-16 07:28+0000\n"
-"PO-Revision-Date: 2016-04-28 06:52+0000\n"
+"POT-Creation-Date: 2016-05-03 12:24+0000\n"
+"PO-Revision-Date: 2016-05-01 08:59+0000\n"
 "Last-Translator: Paolo Valier\n"
 "Language-Team: Italian (http://www.transifex.com/oca/OCA-carrier-delivery-8-0/language/it/)\n"
 "MIME-Version: 1.0\n"
@@ -59,7 +59,7 @@ msgstr "Vettore"
 #. module: delivery_carrier_deposit
 #: help:deposit.slip,carrier_type:0
 msgid "Carrier type (combines several delivery methods)"
-msgstr ""
+msgstr "Tipo di vettore (combina diverse modalità di consegna)"
 
 #. module: delivery_carrier_deposit
 #: help:delivery.deposit.wizard,carrier_type:0
@@ -115,7 +115,7 @@ msgstr "N. Cliente:"
 #. module: delivery_carrier_deposit
 #: help:deposit.slip,message_last_post:0
 msgid "Date of the last message posted on the record."
-msgstr ""
+msgstr "Data dell'ultimo messaggio pubblicato sulla registrazione."
 
 #. module: delivery_carrier_deposit
 #: view:website:delivery_carrier_deposit.report_generic_deposit_slip
@@ -161,6 +161,12 @@ msgid "Deposit Slip n°"
 msgstr ""
 
 #. module: delivery_carrier_deposit
+#: field:delivery.deposit.wizard,display_name:0
+#: field:deposit.slip,display_name:0
+msgid "Display Name"
+msgstr "Nome da visualizzare"
+
+#. module: delivery_carrier_deposit
 #: selection:deposit.slip,state:0
 msgid "Done"
 msgstr "Fatto"
@@ -200,7 +206,7 @@ msgstr "ID"
 #. module: delivery_carrier_deposit
 #: help:deposit.slip,message_unread:0
 msgid "If checked new messages require your attention."
-msgstr ""
+msgstr "Se selezionato i nuovi messaggi richiederanno la tua attenzione."
 
 #. module: delivery_carrier_deposit
 #: field:deposit.slip,message_is_follower:0
@@ -211,6 +217,12 @@ msgstr "È un Follower"
 #: field:deposit.slip,message_last_post:0
 msgid "Last Message Date"
 msgstr "Data dell'ultimo Messaggio"
+
+#. module: delivery_carrier_deposit
+#: field:delivery.deposit.wizard,__last_update:0
+#: field:deposit.slip,__last_update:0
+msgid "Last Modified on"
+msgstr "Ultima modifica il"
 
 #. module: delivery_carrier_deposit
 #: field:delivery.deposit.wizard,write_uid:0 field:deposit.slip,write_uid:0
@@ -230,7 +242,7 @@ msgstr "Messaggi"
 #. module: delivery_carrier_deposit
 #: help:deposit.slip,message_ids:0
 msgid "Messages and communication history"
-msgstr ""
+msgstr "Messaggi e storico comunicazioni"
 
 #. module: delivery_carrier_deposit
 #: field:deposit.slip,name:0
@@ -240,12 +252,17 @@ msgstr "Nome"
 #. module: delivery_carrier_deposit
 #: view:website:delivery_carrier_deposit.report_generic_deposit_slip
 msgid "Name and address"
-msgstr ""
+msgstr "Nome e indirizzo"
 
 #. module: delivery_carrier_deposit
 #: view:website:delivery_carrier_deposit.report_generic_deposit_slip
 msgid "Nr of"
 msgstr "N. di "
+
+#. module: delivery_carrier_deposit
+#: field:deposit.slip,number_of_packages:0
+msgid "Number of Packages"
+msgstr ""
 
 #. module: delivery_carrier_deposit
 #: view:website:delivery_carrier_deposit.report_generic_deposit_slip
@@ -255,12 +272,12 @@ msgstr ""
 #. module: delivery_carrier_deposit
 #: model:ir.model,name:delivery_carrier_deposit.model_stock_picking
 msgid "Picking List"
-msgstr ""
+msgstr "Lista Picking"
 
 #. module: delivery_carrier_deposit
 #: field:deposit.slip,picking_ids:0
 msgid "Pickings"
-msgstr ""
+msgstr "Picking"
 
 #. module: delivery_carrier_deposit
 #: view:deposit.slip:delivery_carrier_deposit.view_deposit_slip_form
@@ -294,6 +311,11 @@ msgstr ""
 #: view:website:delivery_carrier_deposit.report_generic_deposit_slip
 msgid "Total Number of Packages:"
 msgstr "Numero totale di Pacchi:"
+
+#. module: delivery_carrier_deposit
+#: field:deposit.slip,weight:0
+msgid "Total Weight"
+msgstr "Peso Totale"
 
 #. module: delivery_carrier_deposit
 #: view:website:delivery_carrier_deposit.report_generic_deposit_slip
@@ -338,4 +360,4 @@ msgstr ""
 #. module: delivery_carrier_deposit
 #: view:website:delivery_carrier_deposit.report_generic_deposit_slip
 msgid "recipient"
-msgstr ""
+msgstr "destinatario"

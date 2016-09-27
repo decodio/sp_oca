@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: rma (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-12-12 22:57+0000\n"
-"PO-Revision-Date: 2015-12-14 06:38+0000\n"
+"POT-Creation-Date: 2016-05-06 11:34+0000\n"
+"PO-Revision-Date: 2016-05-04 03:48+0000\n"
 "Last-Translator: Matjaž Mozetič <m.mozetic@matmoz.si>\n"
 "Language-Team: Slovenian (http://www.transifex.com/oca/OCA-rma-8-0/language/sl/)\n"
 "MIME-Version: 1.0\n"
@@ -23,6 +23,11 @@ msgstr ""
 #, python-format
 msgid "%s - Lot Number: %s - %s"
 msgstr "%s - Lot številka: %s - %s"
+
+#. module: crm_rma_prodlot_invoice
+#: field:stock.production.lot,lot_complete_name:0
+msgid "Complete Lot Name"
+msgstr "Celoten naziv lota"
 
 #. module: crm_rma_prodlot_invoice
 #: field:stock.production.lot,invoice_line_id:0

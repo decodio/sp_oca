@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: knowledge (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-03 01:59+0000\n"
-"PO-Revision-Date: 2016-03-03 05:30+0000\n"
+"POT-Creation-Date: 2016-05-04 02:39+0000\n"
+"PO-Revision-Date: 2016-05-01 04:54+0000\n"
 "Last-Translator: Matjaž Mozetič <m.mozetic@matmoz.si>\n"
 "Language-Team: Slovenian (http://www.transifex.com/oca/OCA-knowledge-8-0/language/sl/)\n"
 "MIME-Version: 1.0\n"
@@ -34,6 +34,11 @@ msgid "Created on"
 msgstr "Ustvarjeno"
 
 #. module: document_page_tags
+#: field:document.page.tag,display_name:0
+msgid "Display Name"
+msgstr "Prikazni naziv"
+
+#. module: document_page_tags
 #: model:ir.model,name:document_page_tags.model_document_page
 msgid "Document Page"
 msgstr "Stran dokumenta"
@@ -47,6 +52,11 @@ msgstr "ID"
 #: field:document.page,tag_ids:0
 msgid "Keywords"
 msgstr "Ključne besede"
+
+#. module: document_page_tags
+#: field:document.page.tag,__last_update:0
+msgid "Last Modified on"
+msgstr "Zadnjič spremenjeno"
 
 #. module: document_page_tags
 #: field:document.page.tag,write_uid:0

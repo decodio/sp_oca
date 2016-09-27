@@ -24,3 +24,4 @@ from . import stage
 from . import company
 from . import budget_line
 from . import lead
+from . import budget_version

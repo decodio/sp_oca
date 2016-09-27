@@ -19,6 +19,6 @@
     'qweb': [
         'static/src/xml/*.xml',
     ],
-    'auto_install': False,
-    #'web_preload': True,
+    'auto_install': True,
+    'web_preload': True,
 }

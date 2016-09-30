@@ -3,6 +3,7 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 import re
+import threading
 from openerp import models, api, tools
 
 
@@ -12,6 +13,8 @@ class IrMailServer(models.Model):
     def _tracking_headers_add(self, tracking_email_id, headers):
         """Allow other addons to add its own tracking SMTP headers"""
         headers = headers or {}
+        headers['X-Odoo-Database'] = getattr(
+            threading.currentThread(), 'dbname', None),
         headers['X-Odoo-Tracking-ID'] = tracking_email_id
         return headers
 
@@ -24,7 +27,7 @@ class IrMailServer(models.Model):
         if match:
             try:
                 tracking_email_id = int(match.group(1))
-            except:
+            except:  # pragma: no cover
                 pass
         return tracking_email_id
 
@@ -61,7 +64,7 @@ class IrMailServer(models.Model):
             mail_server = mail_server_ids[0] if mail_server_ids else None
         if mail_server:
             smtp_server_used = mail_server.smtp_host
-        else:
+        else:  # pragma: no cover
             smtp_server_used = smtp_server or tools.config.get('smtp_server')
         return smtp_server_used
 

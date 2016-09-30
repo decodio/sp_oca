@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
-
-from cStringIO import StringIO
+from io import BytesIO
 
 
 class SpreadSheetBase(object):
@@ -14,7 +13,7 @@ class SpreadSheetBase(object):
     def tofile(self):
         if self.document is None:
             raise Exception('No document found')
-        fp = StringIO()
+        fp = BytesIO()
         self.document.save(fp)
         fp.seek(0)
         data = fp.read()

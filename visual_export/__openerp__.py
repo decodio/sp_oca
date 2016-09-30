@@ -26,5 +26,5 @@
     'application': False,
     'auto_install': False,
     'license': 'AGPL-3',
-    'external_dependencies':['odf'],
+    'external_dependencies':['odf'], # pip install odfpy
 }

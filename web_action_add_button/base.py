@@ -20,15 +20,25 @@ class IrActionsActWindowButton(osv.Model):
     _name = 'ir.actions.act_window.button'
     _description = 'Button to display'
 
+    _order = 'name'
+
     _columns = {
         'action_from_id': fields.many2one('ir.actions.act_window', 'from Action',
                                           required=True),
-        'action_to_open_id': fields.many2one('ir.actions.act_window', 'to Action',
+        'action_to_open_id': fields.many2one('ir.actions.actions', 'to Action',
                                              required=True),
         'name': fields.char('Label', size=64, required=True, translate=True),
         'menu_id': fields.many2one('ir.actions.act_window.menu', 'Menu'),
         'active': fields.boolean(
             'Active', help='if check, this object is always available'),
+        'visibility_model_name': fields.char(u"Modele",
+                                             help=u"Model where visible_button_method_name is"
+                                                  u"define to manage the button visibility."),
+        'visible_button_method_name': fields.char('Visibility method name',
+                                                  help=u"Method that tell if the button should be "
+                                                       u"visible or not, return True if it must "
+                                                       u"be visible False otherwise."
+                                                       u"def Method(cr, uid, context=None)"),
     }
 
     _defaults = {
@@ -37,11 +47,13 @@ class IrActionsActWindowButton(osv.Model):
 
     def format_buttons(self, cr, uid, ids, context=None):
         res = {}
-        action = self.pool.get('ir.actions.act_window')
+        action = self.pool.get('ir.actions.actions')
 
         def get_action(action_id):
-            return action.read(cr, uid, action_id, [], load="_classic_write",
-                               context=context)
+            model = self.pool.get(action.read(cr, uid, action_id, ['type'],
+                                              context=context)['type'])
+            return model.read(cr, uid, action_id, [], load="_classic_write",
+                              context=context)
 
         for this in self.browse(cr, uid, ids, context=context):
             if not this.active:
@@ -49,6 +61,12 @@ class IrActionsActWindowButton(osv.Model):
 
             if this.menu_id:
                 if not this.menu_id.active:
+                    continue
+
+            if this.visibility_model_name and this.visible_button_method_name:
+                model = self.pool.get(this.visibility_model_name)
+                if not getattr(model, this.visible_button_method_name)(
+                        cr, uid, context=context):
                     continue
 
             menu = this.menu_id.name if this.menu_id else False

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: connector-telephony (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-14 02:09+0000\n"
-"PO-Revision-Date: 2015-10-12 18:36+0000\n"
+"POT-Creation-Date: 2015-11-01 04:07+0000\n"
+"PO-Revision-Date: 2016-09-16 21:46+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: French (http://www.transifex.com/oca/OCA-connector-telephony-8-0/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -80,13 +80,13 @@ msgstr "Créer ou mettre à jour un partenaire"
 #: field:number.not.found,create_uid:0
 #: field:reformat.all.phonenumbers,create_uid:0
 msgid "Created by"
-msgstr ""
+msgstr "Créé par"
 
 #. module: base_phone
 #: field:number.not.found,create_date:0
 #: field:reformat.all.phonenumbers,create_date:0
 msgid "Created on"
-msgstr ""
+msgstr "Date"
 
 #. module: base_phone
 #: field:number.not.found,current_partner_mobile:0
@@ -150,7 +150,7 @@ msgstr "Fixe/Portable"
 #: field:base.phone.installed,id:0 field:number.not.found,id:0
 #: field:phone.common,id:0 field:reformat.all.phonenumbers,id:0
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: base_phone
 #: help:res.company,number_of_digits_to_match_from_end:0
@@ -168,13 +168,13 @@ msgstr "In several situations, OpenERP will have to find a Partner/Lead/Employee
 #: field:number.not.found,write_uid:0
 #: field:reformat.all.phonenumbers,write_uid:0
 msgid "Last Updated by"
-msgstr ""
+msgstr "Dernière mise à jour par"
 
 #. module: base_phone
 #: field:number.not.found,write_date:0
 #: field:reformat.all.phonenumbers,write_date:0
 msgid "Last Updated on"
-msgstr ""
+msgstr "Dernière mise à jour le"
 
 #. module: base_phone
 #: selection:number.not.found,number_type:0
@@ -282,7 +282,7 @@ msgstr "Selectionnez le partenaire à mettre à jour."
 #. module: base_phone
 #: field:reformat.all.phonenumbers,state:0
 msgid "State"
-msgstr ""
+msgstr "État"
 
 #. module: base_phone
 #: model:ir.ui.menu,name:base_phone.menu_config_phone
@@ -321,14 +321,6 @@ msgstr "Décrochez votre téléphone"
 #: view:number.not.found:base_phone.number_not_found_form
 msgid "Update Partner with this Number"
 msgstr "Mettre à jour le partenaire avec ce numéro"
-
-#. module: base_phone
-#: code:addons/base_phone/base_phone.py:81
-#, python-format
-msgid ""
-"You should set a country on the company '%s' to allow the reformat of phone "
-"numbers"
-msgstr ""
 
 #. module: base_phone
 #: view:res.company:base_phone.view_company_form

@@ -13,7 +13,7 @@ openerp.gantt_improvement = function (instance) {
     instance.gantt_improvement.GanttView = instance.web.View.extend({
         /* Defines */
         gantt_improvement_id: null,                 // ID for dhtmlx
-        
+
         def_already_loaded: false,                  // If gantt has already loaded
 
         def_last_domains: null,                     // use for do_search, for reload
@@ -34,7 +34,7 @@ openerp.gantt_improvement = function (instance) {
         display_name: _lt('Gantt'),
         template: "GanttView",
         view_type: "gantt",
-        
+
         /* Events */
         events: {
             'click .gantt_improvement_scale' : 'reset_scale',
@@ -75,7 +75,7 @@ openerp.gantt_improvement = function (instance) {
             this.def_last_contexts = contexts;
             this.def_last_group_bys = group_bys;
             this.reload_gantt();
-            
+
             if (this.attrs.date_stop !== undefined) {
                 // We know end date
                 filter = [
@@ -139,7 +139,7 @@ openerp.gantt_improvement = function (instance) {
                 /* Disallow drag */
                 gantt.config.drag_links = false;
                 gantt.config.drag_progress = false;
-    
+
                 gantt.config.show_drag_dates = true;
                 gantt.config.drag_label_width = 110;
                 gantt.config.drag_date = "%Y‐%m‐%d %H:%i";
@@ -209,10 +209,10 @@ openerp.gantt_improvement = function (instance) {
                         return "weekend";
                     }
                 };
-                
+
                 /* Display task details on click */
                 for (var ev in this.event_list) {
-                    gantt.detachEvent(this.event_list[ev]); 
+                    gantt.detachEvent(this.event_list[ev]);
                 }
                 this.event_list.push(gantt.attachEvent("onTaskDblClick", function(id, e) {
                     if (id !== undefined && id !== null && id.indexOf('p') === -1) {
@@ -265,11 +265,14 @@ openerp.gantt_improvement = function (instance) {
             if (this.attrs.string !== undefined) {
                 label = this.attrs.string;
             }
+            if (this.attrs.scale !== undefined) {
+                self.set_scale(this.attrs.scale);
+            }
             gantt.config.columns = [
                 {name: "text", label: label, width:"*", tree:true}
             ];
-            this.def_already_loaded = true;         
-        },        
+            this.def_already_loaded = true;
+        },
 
         parse_data: function(domains, contexts, group_bys) {
             var self = this,
@@ -282,7 +285,7 @@ openerp.gantt_improvement = function (instance) {
                 start,
                 item_parent_id,
                 item_parent_name;
-            
+
             this.def_items_ids = [];
             if (group_bys[0] === '' || group_bys[0] === undefined) {
                 if (this.attrs.default_group_by !== undefined) {
@@ -297,7 +300,7 @@ openerp.gantt_improvement = function (instance) {
                     (this.attrs.date_delay !== undefined &&
                      this.def_items[i][this.attrs.date_delay] !== undefined &&
                      this.def_items[i][this.attrs.date_delay] !== false))) {
-                    
+
                     item = this.def_items[i];
                     data = null;
                     start = null;
@@ -312,9 +315,8 @@ openerp.gantt_improvement = function (instance) {
                         item_parent_id = 'p' + 0;
                         item_parent_name = 'Gantt View';
                     } else if (item[group_bys[0]] !== undefined) {
-
-                        item_parent_id = 'p' + item[group_bys][0];
-                        item_parent_name = item[group_bys][1];
+                        item_parent_id = 'p' + item[group_bys[0]][0];
+                        item_parent_name = item[group_bys[0]][1];
                     }
 
                     if (parents[item_parent_id] === undefined) {
@@ -365,11 +367,15 @@ openerp.gantt_improvement = function (instance) {
 
         draw_gantt: function (datas, links) {
             var today = new Date();
+            document.getElementById('gantt_improvement_date_start').value = this.def_gantt_date_start.toISOString().slice(0,10);
+            document.getElementById('gantt_improvement_date_stop').value = this.def_gantt_date_end.toISOString().slice(0,10);
 
-            gantt.init(this.gantt_improvement_id, this.def_gantt_date_start, this.def_gantt_date_stop);
+            gantt.config.autosize = "y";
+            gantt.init(this.gantt_improvement_id, this.def_gantt_date_start, this.def_gantt_date_end);
+            gantt.clearAll();
             gantt.parse({'data': datas, 'links': links});
             gantt.config.start_date = this.def_gantt_date_start;
-            gantt.config.end_date = this.def_gantt_date_stop;
+            gantt.config.end_date = this.def_gantt_date_end;
             gantt.addMarker({
                 start_date: today,
                 css: "today",
@@ -392,9 +398,9 @@ openerp.gantt_improvement = function (instance) {
             date_stop = document.getElementById('gantt_improvement_date_stop').value;
             if (date_start !== '' && date_start !== null && date_stop !== '' && date_stop !== null) {
                 this.def_gantt_date_start = new Date(date_start);
-                this.def_gantt_date_stop = new Date(date_stop);
+                this.def_gantt_date_end = new Date(date_stop);
                 gantt.config.start_date = this.def_gantt_date_start;
-                gantt.config.end_date = this.def_gantt_date_stop;
+                gantt.config.end_date = this.def_gantt_date_end;
             }
             this.reload();
         },
@@ -404,9 +410,14 @@ openerp.gantt_improvement = function (instance) {
                 case "1":
                     gantt.config.scale_unit = "day";
                     gantt.config.step = 1;
-                    gantt.config.date_scale = "%d %M";
-                    gantt.config.subscales = [];
-                    gantt.config.scale_height = 27;
+                    // gantt.config.date_scale = "%d %M";
+                    // gantt.config.subscales = [];
+                    // gantt.config.scale_height = 27;
+                    gantt.config.date_scale = "%d %M, %D";
+                    gantt.config.subscales = [
+                        {unit:"hour", step:1, date:"%H:00" }
+                    ];
+                    gantt.config.scale_height = 50;
                     gantt.templates.date_scale = null;
                     break;
                 case "2":
@@ -428,7 +439,8 @@ openerp.gantt_improvement = function (instance) {
                     gantt.config.scale_unit = "month";
                     gantt.config.date_scale = "%F, %Y";
                     gantt.config.subscales = [
-                        {unit:"day", step:1, date:"%j, %D" }
+                        //{unit:"day", step:1, date:"%j, %D" }
+                        {unit:"week", step:1, date: _lt("Week") + " #%W" }
                     ];
                     gantt.config.scale_height = 50;
                     gantt.templates.date_scale = null;
@@ -437,12 +449,14 @@ openerp.gantt_improvement = function (instance) {
                     gantt.config.scale_unit = "year";
                     gantt.config.step = 1;
                     gantt.config.date_scale = "%Y";
+                    // gantt.config.min_column_width = 50;
+                    //
+                    // gantt.config.scale_height = 90;
+                    // gantt.templates.date_scale = null;
                     gantt.config.min_column_width = 50;
-
-                    gantt.config.scale_height = 90;
+                    gantt.config.scale_height = 50;
                     gantt.templates.date_scale = null;
 
-                    
                     gantt.config.subscales = [
                         {unit:"month", step:1, date:"%M" }
                     ];
@@ -516,4 +530,3 @@ openerp.gantt_improvement = function (instance) {
         }
     });
 };
-

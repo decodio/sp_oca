@@ -13,7 +13,7 @@ class ResPartnerBank(models.Model):
     @api.constrains('bank_bic')
     def check_bic_length(self):
         for pbank in self:
-            if pbank.bank_bic and len(pbank.bank_bic) not in (8, 11):
+            if pbank.bank_bic and len(pbank.bank_bic) not in (8, 10, 11):
                 raise ValidationError(_(
                     "A valid BIC contains 8 or 11 caracters. The BIC '%s' "
                     "contains %d caracters, so it is not valid.")
@@ -27,7 +27,7 @@ class ResBank(models.Model):
     @api.constrains('bic')
     def check_bic_length(self):
         for bank in self:
-            if bank.bic and len(bank.bic) not in (8, 11):
+            if bank.bic and len(bank.bic) not in (8, 10, 11):
                 raise ValidationError(_(
                     "A valid BIC contains 8 or 11 caracters. The BIC '%s' "
                     "contains %d caracters, so it is not valid.")

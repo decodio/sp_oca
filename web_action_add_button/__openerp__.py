@@ -6,7 +6,7 @@
     'depends': [
         'web',
     ],
-    'update_xml': [
+    'data': [
         'security/ir.model.access.csv',
         'base.xml',
     ],

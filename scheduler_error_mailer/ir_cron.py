@@ -46,7 +46,7 @@ class ir_cron(orm.Model):
     def _handle_callback_exception(self, cr, uid, model_name, method_name,
                                    args, job_id, job_exception):
 
-        res = super(ir_cron, self)._handle_callbakc_exception(
+        res = super(ir_cron, self)._handle_callback_exception(
             cr, uid, model_name, method_name, args, job_id, job_exception)
 
         my_cron = self.browse(cr, uid, job_id)

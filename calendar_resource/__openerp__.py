@@ -22,7 +22,7 @@
 
 {
     'name': 'Calendar Resources',
-    'version': '0.1',
+    'version': '8.0.1.0.1',
     'author': 'Savoir-faire Linux',
     'maintainer': 'Savoir-faire Linux',
     'website': 'http://www.savoirfairelinux.com',
@@ -30,24 +30,23 @@
     'category': 'CRM',
     'summary': 'New features to facilitate resources management with meetings',
     'description': """
-Calendar Resources
-==================
+CRM Meeting Resources
+=====================
 This module add new features to facilitate your resources management with your meetings :
-
-* improvement in resource.resource native object (image, note and boolean choice for using it in your calendars)
-* add a link between your calendars and your resources,
-* switch easily your calendar's views with attendees and resources,
-* add a new menu entry to display event by resources in several views (calendar, list and form)
+- improvement in resource.resource native object (image, note and boolean choice for using it in your calendars)
+- add a link between your calendars and your resources,
+- switch easily your calendar's views with attendees and resources,
+- add a new menu entry to display event by resources in several views (calendar, list and form)
 
 Note that the customer don't expect for this step :
-
-* any constraint between resources reservations in calendar,
-* any interface with calendar_google for the 'resource' object.
+- any constraint between resources reservations in calendar,
+- any interface with calendar_google for the 'resource' object.
 
 Contributors
 ------------
-* Jordi RIERA (jordi.riera@savoirfairelinux.com)
-* Bruno JOLIVEAU (bruno.joliveau@savoirfairelinux.com)
+
+    Jordi RIERA (jordi.riera@savoirfairelinux.com)
+    Bruno JOLIVEAU (bruno.joliveau@savoirfairelinux.com)
 
 More information
 ----------------
@@ -59,17 +58,8 @@ More information
         'resource',
         'calendar',
     ],
-    'external_dependencies': {
-        'python': [],
-    },
     'data': [
-        'views/calendar_event_view.xml',
-        #'views/resource_calendar_leaves_view.xml',
-        #'views/resource_resource_view.xml',
-        #'data/resource_calendar_data.xml',
+        'views/resource_view.xml',
     ],
-    'demo': [
-        #'demo/resource_demo.xml',
-    ],
-    'installable': True,  # False
+    'installable': True,
 }

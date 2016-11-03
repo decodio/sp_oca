@@ -59,6 +59,7 @@ More information
         'calendar',
     ],
     'data': [
+        'views/calendar_view.xml',
         'views/resource_view.xml',
     ],
     'installable': True,

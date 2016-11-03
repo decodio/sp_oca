@@ -26,6 +26,6 @@ class resource_resource(models.Model):
 
     image = fields.Binary(
         help="This field holds the image used as avatar for this resource."
-    ),
+    )
     display = fields.Boolean()
     note = fields.Text()

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bank-payment (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-03 05:04+0000\n"
-"PO-Revision-Date: 2016-09-09 11:33+0000\n"
+"POT-Creation-Date: 2016-09-21 10:50+0000\n"
+"PO-Revision-Date: 2016-10-04 09:43+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: German (http://www.transifex.com/oca/OCA-bank-payment-8-0/language/de/)\n"
 "MIME-Version: 1.0\n"
@@ -113,7 +113,7 @@ msgstr ""
 #. module: account_banking_sepa_direct_debit
 #: view:banking.export.sdd.wizard:account_banking_sepa_direct_debit.banking_export_sdd_wizard_view
 msgid "Cancel"
-msgstr ""
+msgstr "Abbrechen"
 
 #. module: account_banking_sepa_direct_debit
 #: field:banking.export.sdd.wizard,charge_bearer:0
@@ -123,7 +123,7 @@ msgstr ""
 #. module: account_banking_sepa_direct_debit
 #: model:ir.model,name:account_banking_sepa_direct_debit.model_res_company
 msgid "Companies"
-msgstr ""
+msgstr "Unternehmen"
 
 #. module: account_banking_sepa_direct_debit
 #: view:website:account_banking_sepa_direct_debit.sepa_direct_debit_mandate_document
@@ -168,7 +168,7 @@ msgstr ""
 #. module: account_banking_sepa_direct_debit
 #: field:banking.export.sdd.wizard,display_name:0
 msgid "Display Name"
-msgstr ""
+msgstr "Anzeigename"
 
 #. module: account_banking_sepa_direct_debit
 #: help:payment.mode,sepa_creditor_identifier:0
@@ -300,7 +300,7 @@ msgstr ""
 #. module: account_banking_sepa_direct_debit
 #: field:banking.export.sdd.wizard,__last_update:0
 msgid "Last Modified on"
-msgstr ""
+msgstr "Zuletzt geändert am"
 
 #. module: account_banking_sepa_direct_debit
 #: field:banking.export.sdd.wizard,write_uid:0

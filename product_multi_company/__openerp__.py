@@ -1,40 +1,24 @@
 # -*- coding: utf-8 -*-
-##############################################################################
-#    
-#    OpenERP, Open Source Management Solution
-#    Copyright (C) 2004-2010 Tiny SPRL (<http://tiny.be>).
-#
-#    This program is free software: you can redistribute it and/or modify
-#    it under the terms of the GNU Affero General Public License as
-#    published by the Free Software Foundation, either version 3 of the
-#    License, or (at your option) any later version.
-#
-#    This program is distributed in the hope that it will be useful,
-#    but WITHOUT ANY WARRANTY; without even the implied warranty of
-#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#    GNU Affero General Public License for more details.
-#
-#    You should have received a copy of the GNU Affero General Public License
-#    along with this program.  If not, see <http://www.gnu.org/licenses/>.     
-#
-##############################################################################
+# (c) 2015 Serv. Tecnol. Avanzados - Pedro M. Baeza
+# License AGPL-3 - See http://www.gnu.org/licenses/agpl-3.0.html
 
 {
-    "name" : "Product multi company ",
-    "version" : "1.1",
-    "author" : "OpenERP SA,Odoo Community Association (OCA)",
-    "license": "AGPL-3",
-    "category" : "Generic Modules/Inventory Control",
-    "depends" : [ "product"],
-    "init_xml" : [],
-    "demo_xml" : [],
-    "description": """
-        This module updates the definitions of standard price, public price and seller price with property fields.
-    """,
-    'update_xml': [],
-    'test':[],
-    'installable': False,
-    'active': False,
+    'name': "Product multi-company",
+    'summary': "Select individually the product visibility on each company",
+    'author': "Serv. Tecnol. Avanzados - Pedro M. Baeza,"
+              "Odoo Community Association (OCA)",
+    'website': "http://serviciosbaeza.com",
+    'category': 'Product Management',
+    'version': '8.0.1.0.0',
+    'license': 'AGPL-3',
+    'depends': [
+        'product',
+        'purchase',
+        'sale_stock',
+    ],
+    'data': [
+        'views/product_template_view.xml',
+    ],
+    'post_init_hook': 'post_init_hook',
+    'uninstall_hook': 'uninstall_hook',
 }
-
-# vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:

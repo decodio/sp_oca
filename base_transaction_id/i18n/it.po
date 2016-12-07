@@ -3,11 +3,15 @@
 # * base_transaction_id
 # 
 # Translators:
+# Florian Dauly <fd@deezer.com>, 2016
+# FRANCISCO JAVIER FERNÁNDEZ MARTÍNEZ <spain@deezer.com>, 2016
+# Jocelyn Bousquet <jbo@deezer.com>, 2015-2016
+# Omar Zamora <oz@deezer.com>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: bank-statement-reconcile (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-14 09:25+0000\n"
+"POT-Creation-Date: 2016-10-27 02:42+0000\n"
 "PO-Revision-Date: 2015-07-22 06:46+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: Italian (http://www.transifex.com/oca/OCA-bank-statement-reconcile-8-0/language/it/)\n"
@@ -25,7 +29,7 @@ msgstr "Linea estratto conto"
 #. module: base_transaction_id
 #: model:ir.model,name:base_transaction_id.model_account_invoice
 msgid "Invoice"
-msgstr ""
+msgstr "Fattura"
 
 #. module: base_transaction_id
 #: model:ir.model,name:base_transaction_id.model_account_move_line
@@ -35,7 +39,7 @@ msgstr ""
 #. module: base_transaction_id
 #: model:ir.model,name:base_transaction_id.model_stock_picking
 msgid "Picking List"
-msgstr ""
+msgstr "Lista Picking"
 
 #. module: base_transaction_id
 #: view:account.move.line:base_transaction_id.view_move_line_form
@@ -45,7 +49,7 @@ msgstr ""
 #. module: base_transaction_id
 #: model:ir.model,name:base_transaction_id.model_sale_order
 msgid "Sales Order"
-msgstr ""
+msgstr "Ordini di Vendita"
 
 #. module: base_transaction_id
 #: field:account.invoice,transaction_id:0 field:sale.order,transaction_id:0

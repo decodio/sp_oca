@@ -44,6 +44,17 @@ class MrpProduction(models.Model):
             move.work_order = line.work_order.id
         return move_id
 
+    @api.model
+    def _make_consume_line_from_data(self, production, product, uom_id, qty,
+                                     uos_id, uos_qty):
+        move_id = super(MrpProduction, self)._make_consume_line_from_data(
+            production, product, uom_id, qty, uos_id, uos_qty)
+        work_order = self.env.context.get('default_work_order', False)
+        if work_order:
+            move = self.env['stock.move'].browse(move_id)
+            move.work_order = work_order
+        return move_id
+
 
 class MrpProductionProductLine(models.Model):
     _inherit = 'mrp.production.product.line'
@@ -133,5 +144,29 @@ class MrpProductionWorkcenterLine(models.Model):
                 raise exceptions.Warning(
                     _("Missing materials to start the production"))
             if workorder.production_id.state in ('confirmed', 'ready'):
+                workorder.production_id.signal_workflow('moves_ready')
+                # bypass force_production method in production order
                 workorder.production_id.state = 'in_production'
         return super(MrpProductionWorkcenterLine, self).action_start_working()
+
+    @api.multi
+    def button_done(self):
+        res = {}
+        move_list = self.move_lines.filtered(
+            lambda x: x.state not in('cancel', 'done'))
+        if move_list:
+            idform = self.env.ref(
+                'mrp_operations_extension.finish_wo_form_view')
+            res = {
+                'type': 'ir.actions.act_window',
+                'name': _('Finish WO'),
+                'res_model': 'workcenter.line.finish',
+                'view_type': 'form',
+                'view_mode': 'form',
+                'views': [(idform.id, 'form')],
+                'target': 'new',
+                'context': self.env.context
+                }
+        else:
+            self.signal_workflow('button_done')
+        return res

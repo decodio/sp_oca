@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: account-payment (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-14 03:08+0000\n"
-"PO-Revision-Date: 2016-04-11 16:26+0000\n"
-"Last-Translator: <>\n"
+"POT-Creation-Date: 2016-09-22 16:30+0000\n"
+"PO-Revision-Date: 2016-10-04 09:43+0000\n"
+"Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: German (http://www.transifex.com/oca/OCA-account-payment-8-0/language/de/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -92,18 +92,28 @@ msgstr ""
 #. module: account_payment_return_import
 #: field:payment.return.import,create_uid:0
 msgid "Created by"
-msgstr ""
+msgstr "Erstellt von"
 
 #. module: account_payment_return_import
 #: field:payment.return.import,create_date:0
 msgid "Created on"
-msgstr ""
+msgstr "Erstellt am:"
+
+#. module: account_payment_return_import
+#: field:payment.return.import,display_name:0
+msgid "Display Name"
+msgstr "Anzeigename"
 
 #. module: account_payment_return_import
 #: help:payment.return.import,data_file:0
 msgid ""
 "Get you bank payment returns in electronic format from your bank and select "
 "them here."
+msgstr ""
+
+#. module: account_payment_return_import
+#: field:payment.return.import,hide_journal_field:0
+msgid "Hide the journal field in the view"
 msgstr ""
 
 #. module: account_payment_return_import
@@ -114,7 +124,7 @@ msgstr ""
 #. module: account_payment_return_import
 #: field:payment.return.import,id:0
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: account_payment_return_import
 #: field:payment.return.line,unique_import_id:0
@@ -136,17 +146,22 @@ msgstr ""
 #. module: account_payment_return_import
 #: field:payment.return.import,journal_id:0
 msgid "Journal"
-msgstr ""
+msgstr "Journal"
+
+#. module: account_payment_return_import
+#: field:payment.return.import,__last_update:0
+msgid "Last Modified on"
+msgstr "Zuletzt geändert am"
 
 #. module: account_payment_return_import
 #: field:payment.return.import,write_uid:0
 msgid "Last Updated by"
-msgstr ""
+msgstr "Zuletzt aktualisiert von"
 
 #. module: account_payment_return_import
 #: field:payment.return.import,write_date:0
 msgid "Last Updated on"
-msgstr ""
+msgstr "Zuletzt aktualisiert am"
 
 #. module: account_payment_return_import
 #: field:payment.return.import,data_file:0
@@ -200,4 +215,4 @@ msgstr ""
 #. module: account_payment_return_import
 #: view:payment.return.import:account_payment_return_import.account_payment_return_import_view
 msgid "or"
-msgstr ""
+msgstr "oder"

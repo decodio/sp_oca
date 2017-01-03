@@ -107,6 +107,7 @@ class PurchaseRequestLineMakePurchaseOrder(models.TransientModel):
             name=False, price_unit=False, state='draft')['value']
         vals.update({
             'order_id': po.id,
+            'name': item.name,
             'product_id': product.id,
             'account_analytic_id': item.line_id.analytic_account_id.id,
             'taxes_id': [(6, 0, vals.get('taxes_id', []))],
@@ -124,6 +125,7 @@ class PurchaseRequestLineMakePurchaseOrder(models.TransientModel):
     def _get_order_line_search_domain(self, order, item):
         vals = self._prepare_purchase_order_line(order, item)
         order_line_data = [('order_id', '=', order.id),
+                           ('name', '=', item.name),
                            ('product_id', '=', item.product_id.id or False),
                            ('product_uom', '=', vals['product_uom']),
                            ('account_analytic_id', '=',
@@ -151,6 +153,10 @@ class PurchaseRequestLineMakePurchaseOrder(models.TransientModel):
 
         for item in self.item_ids:
             line = item.line_id
+            if line.request_state != 'approved':
+                raise exceptions.Warning(
+                    _('Purchase request %s is not approved.')
+                    % line.request_id.name)
             if line.purchase_state == 'done':
                 raise exceptions.Warning(
                     _('The purchase has already been completed.'))

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: e-commerce (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-06 14:52+0000\n"
+"POT-Creation-Date: 2016-09-17 10:15+0000\n"
 "PO-Revision-Date: 2016-03-29 10:29+0000\n"
 "Last-Translator: <>\n"
 "Language-Team: German (http://www.transifex.com/oca/OCA-e-commerce-8-0/language/de/)\n"
@@ -49,7 +49,7 @@ msgstr ""
 #. module: website_sale_product_legal
 #: view:website:website_sale_product_legal.legal_terms_modal
 msgid "Close"
-msgstr ""
+msgstr "Abschließen"
 
 #. module: website_sale_product_legal
 #: field:website_sale_product_legal.legal_term,contents:0
@@ -69,7 +69,7 @@ msgstr "Erstellt am:"
 #. module: website_sale_product_legal
 #: field:website_sale_product_legal.legal_term,display_name:0
 msgid "Display Name"
-msgstr ""
+msgstr "Anzeigename"
 
 #. module: website_sale_product_legal
 #: field:website_sale_product_legal.legal_term,id:0
@@ -79,7 +79,7 @@ msgstr "ID"
 #. module: website_sale_product_legal
 #: field:website_sale_product_legal.legal_term,__last_update:0
 msgid "Last Modified on"
-msgstr ""
+msgstr "Zuletzt geändert am"
 
 #. module: website_sale_product_legal
 #: field:website_sale_product_legal.legal_term,write_uid:0
@@ -116,7 +116,7 @@ msgstr ""
 #. module: website_sale_product_legal
 #: field:website_sale_product_legal.legal_term,name:0
 msgid "Name"
-msgstr ""
+msgstr "Bezeichnung"
 
 #. module: website_sale_product_legal
 #: help:product.template,legal_term_ids:0

@@ -72,5 +72,5 @@ More information
     'demo': [
         'demo/resource_demo.xml',
     ],
-    'installable': True,
+    'installable': True,  # False
 }

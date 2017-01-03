@@ -25,7 +25,7 @@ msgstr ""
 #. module: base_phone
 #: view:reformat.all.phonenumbers:base_phone.reformat_all_phonenumbers_form
 msgid "Cancel"
-msgstr ""
+msgstr "Abbrechen"
 
 #. module: base_phone
 #: code:addons/base_phone/base_phone.py:112
@@ -53,12 +53,12 @@ msgstr ""
 #: view:number.not.found:base_phone.number_not_found_form
 #: view:reformat.all.phonenumbers:base_phone.reformat_all_phonenumbers_form
 msgid "Close"
-msgstr ""
+msgstr "Abschließen"
 
 #. module: base_phone
 #: model:ir.model,name:base_phone.model_res_company
 msgid "Companies"
-msgstr ""
+msgstr "Unternehmen"
 
 #. module: base_phone
 #: code:addons/base_phone/wizard/number_not_found.py:87
@@ -216,7 +216,7 @@ msgstr ""
 #. module: base_phone
 #: model:ir.model,name:base_phone.model_res_partner
 msgid "Partner"
-msgstr ""
+msgstr "Partner"
 
 #. module: base_phone
 #: help:number.not.found,to_update_partner_id:0

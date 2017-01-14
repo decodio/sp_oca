@@ -1,69 +1,54 @@
 # -*- coding: utf-8 -*-
-##############################################################################
-#
-#    OpenERP, Open Source Management Solution
-#    Copyright (C) 2014 ABF OSIELL SARL (http://osiell.com).
-#                       Sebastien Alix <contact@osiell.com>
-#
-#    This program is free software: you can redistribute it and/or modify
-#    it under the terms of the GNU Affero General Public License as
-#    published by the Free Software Foundation, either version 3 of the
-#    License, or (at your option) any later version.
-#
-#    This program is distributed in the hope that it will be useful,
-#    but WITHOUT ANY WARRANTY; without even the implied warranty of
-#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#    GNU Affero General Public License for more details.
-#
-#    You should have received a copy of the GNU Affero General Public License
-#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
-##############################################################################
+# Copyright 2014 ABF OSIELL <http://osiell.com>
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from openerp.osv import osv, fields
+from openerp import api, fields, models
 
 
-class res_users(osv.Model):
+class ResUsers(models.Model):
     _inherit = 'res.users'
 
-    _columns = {
-        'role_ids': fields.many2many(
-            'res.users.role',
-            'res_users_role_user_rel',
-            'user_id', 'role_id',
-            string=u"Roles"),
-    }
+    role_line_ids = fields.One2many(
+        'res.users.role.line', 'user_id', string=u"Role lines")
+    role_ids = fields.One2many(
+        'res.users.role', string=u"Roles", compute='_compute_role_ids')
 
-    def create(self, cr, uid, vals, context=None):
-        new_id = super(res_users, self).create(
-            cr, uid, vals, context=context)
-        self.set_groups_from_roles(cr, uid, [new_id], context=context)
-        return new_id
+    @api.multi
+    @api.depends('role_line_ids.role_id')
+    def _compute_role_ids(self):
+        for user in self:
+            user.role_ids = user.role_line_ids.mapped('role_id')
 
-    def write(self, cr, uid, ids, vals, context=None):
-        res = super(res_users, self).write(
-            cr, uid, ids, vals, context=context)
-        self.set_groups_from_roles(cr, uid, ids, context=context)
+    @api.model
+    def create(self, vals):
+        new_record = super(ResUsers, self).create(vals)
+        new_record.set_groups_from_roles()
+        return new_record
+
+    @api.multi
+    def write(self, vals):
+        res = super(ResUsers, self).write(vals)
+        self.sudo().set_groups_from_roles()
         return res
 
-    def set_groups_from_roles(self, cr, uid, ids, context=None):
+    @api.multi
+    def set_groups_from_roles(self):
         """Set (replace) the groups following the roles defined on users.
         If no role is defined on the user, its groups are let untouched.
         """
-        if context is None:
-            context = {}
-        for user in self.browse(cr, uid, ids, context=context):
-            if not user.role_ids:
+        for user in self:
+            if not user.role_line_ids:
                 continue
             group_ids = []
-            for role in user.role_ids:
+            role_lines = user.role_line_ids.filtered(
+                lambda rec: rec.is_enabled)
+            for role_line in role_lines:
+                role = role_line.role_id
                 group_ids.append(role.group_id.id)
-                group_ids.extend([group.id for group in role.implied_ids])
-            if group_ids:
-                group_ids = list(set(group_ids))    # Remove duplicates IDs
-                vals = {
-                    'groups_id': [(6, 0, group_ids)],
-                }
-                super(res_users, self).write(
-                    cr, uid, [user.id], vals, context=context)
+                group_ids.extend(role.implied_ids.ids)
+            group_ids = list(set(group_ids))    # Remove duplicates IDs
+            vals = {
+                'groups_id': [(6, 0, group_ids)],
+            }
+            super(ResUsers, user).write(vals)
         return True

@@ -25,4 +25,4 @@ msgstr "Descripción"
 #. module: project_description
 #: model:ir.model,name:project_description.model_project_project
 msgid "Project"
-msgstr ""
+msgstr "Proyecto"

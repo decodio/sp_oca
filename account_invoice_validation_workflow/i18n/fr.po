@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: account-invoicing (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-04 13:40+0000\n"
-"PO-Revision-Date: 2015-09-12 22:39+0000\n"
+"POT-Creation-Date: 2016-11-28 21:51+0000\n"
+"PO-Revision-Date: 2016-12-01 16:34+0000\n"
 "Last-Translator: Bruno JOLIVEAU\n"
 "Language-Team: French (http://www.transifex.com/oca/OCA-account-invoicing-8-0/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -149,7 +149,7 @@ msgstr ""
 #. module: account_invoice_validation_workflow
 #: view:account.invoice:account_invoice_validation_workflow.invoice_form_validation_wkfl
 msgid "Validate"
-msgstr ""
+msgstr "Valider"
 
 #. module: account_invoice_validation_workflow
 #: code:addons/account_invoice_validation_workflow/invoice.py:45

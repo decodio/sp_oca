@@ -2,18 +2,17 @@
     Copyright 2016 Siddharth Bhalgami <siddharth.bhalgami@techreceptives.com>
     License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 */
-odoo.define('web_widget_image_webcam.webcam_widget', function(require) {
+
+openerp.web_widget_image_webcam = function(instance) {
     "use strict";
+    var _t = instance.web._t;
+    var QWeb = instance.web.qweb;
 
-    var core = require('web.core');
-    var Model = require('web.Model');
-    var Dialog = require('web.Dialog');
+    var core = instance.web;
+    var Model = instance.web.Model;
+    var Dialog = instance.web.Dialog;
 
-    var _t = core._t;
-    var QWeb = core.qweb;
-
-    core.form_widget_registry.get("image").include({
-
+    instance.web.form.FieldBinaryImage.include({
         render_value: function () {
             this._super();
 
@@ -51,15 +50,14 @@ odoo.define('web_widget_image_webcam.webcam_widget', function(require) {
             });
 
             self.$el.find('.oe_form_binary_file_web_cam').off().on('click', function(){
-                // Init Webcam
-                new Dialog(self, {
+                self.photo_booth_dialog = new Dialog(self, {
                     size: 'large',
                     dialogClass: 'o_act_window',
                     title: _t("WebCam Booth"),
-                    $content: WebCamDialog,
+
                     buttons: [
                         {
-                            text: _t("Take Snapshot"), classes: 'btn-primary take_snap_btn',
+                            text: _t("Take Snapshot"), oe_link_class: 'btn-primary take_snap_btn',
                             click: function () {
                                 Webcam.snap( function(data) {
                                     img_data = data;
@@ -67,11 +65,12 @@ odoo.define('web_widget_image_webcam.webcam_widget', function(require) {
                                     WebCamDialog.find("#webcam_result").html('<img src="'+img_data+'"/>');
                                 });
                                 // Remove "disabled" attr from "Save & Close" button
-                                $('.save_close_btn').removeAttr('disabled');
+                                if (img_data)
+                                    $('.modal-content.openerp .modal-footer .save_close_btn').removeAttr('disabled');
                             }
                         },
                         {
-                            text: _t("Save & Close"), classes: 'btn-primary save_close_btn', close: true,
+                            text: _t("Save & Close"), oe_link_class: 'btn-primary save_close_btn',
                             click: function () {
                                 var img_data_base64 = img_data.split(',')[1];
 
@@ -92,24 +91,31 @@ odoo.define('web_widget_image_webcam.webcam_widget', function(require) {
 
                                 // Upload image in Binary Field
                                 self.on_file_uploaded(approx_img_size, "web-cam-preview.jpeg", "image/jpeg", img_data_base64);
+                                self.photo_booth_dialog.close();
                             }
                         },
                         {
-                            text: _t("Close"), close: true
+                            text: _t("Close"), click: function () {self.photo_booth_dialog.close();}
                         }
                     ]
-                }).open();
+                }, $(WebCamDialog));
 
+                self.photo_booth_dialog.open();
+
+                // Init Webcam
                 Webcam.attach('#live_webcam');
 
                 // At time of Init "Save & Close" button is disabled
-                $('.save_close_btn').attr('disabled', 'disabled');
+                $('.modal-content.openerp .modal-footer .save_close_btn').attr('disabled', 'disabled');
 
                 // Placeholder Image in the div "webcam_result"
                 WebCamDialog.find("#webcam_result").html('<img src="/web_widget_image_webcam/static/src/img/webcam_placeholder.png"/>');
+
             });
         },
     });
+
+    //instance.web.form.widgets.add('image_webcam', 'openerp.web_widget_image_webcam');
 
     Dialog.include({
         destroy: function () {
@@ -119,4 +125,4 @@ odoo.define('web_widget_image_webcam.webcam_widget', function(require) {
         },
     });
 
-});
+}

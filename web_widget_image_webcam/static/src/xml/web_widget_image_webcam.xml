@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Copyright 2016 Siddharth Bhalgami <siddharth.bhalgami@techreceptives.com>
      License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl). -->
-<template id="template" xml:space="preserve">
+<templates>
 
     <t t-extend="FieldBinaryImage">
         <t t-jquery=".oe_form_binary_file_edit" t-operation="after">
@@ -25,4 +25,4 @@
         </div>
     </div>
 
-</template>
+</templates>

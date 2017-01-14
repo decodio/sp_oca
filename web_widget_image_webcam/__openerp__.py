@@ -2,9 +2,9 @@
 # Copyright 2016 Siddharth Bhalgami <siddharth.bhalgami@techreceptives.com>
 # License LGPL-3.0 or later (http://www.gnu.org/licenses/lgpl).
 {
-    "name": "Web Widget - Image WebCam",
-    "summary": "Allows to take image with WebCam",
-    "version": "9.0.1.0.0",
+    "name": "SP Web Widget - Image WebCam",
+    "summary": "Allows to take image with WebCam (Backported from 9.0)",
+    "version": "8.0.1.0.0",
     "category": "web",
     "website": "https://www.techreceptives.com",
     "author": "Tech Receptives, "

@@ -3,13 +3,14 @@
 # * stock_lock_lot
 # 
 # Translators:
-# Oihane Crucelaegui <oihanecruce@gmail.com>, 2016
+# oihane <oihanecruce@gmail.com>, 2016
+# oihane <oihanecruce@gmail.com>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: stock-logistics-workflow (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-24 02:43+0000\n"
-"PO-Revision-Date: 2016-04-23 07:49+0000\n"
+"POT-Creation-Date: 2016-11-18 01:44+0000\n"
+"PO-Revision-Date: 2016-11-25 14:56+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: Spanish (http://www.transifex.com/oca/OCA-stock-logistics-workflow-8-0/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -77,6 +78,11 @@ msgid "Demanded by product category"
 msgstr ""
 
 #. module: stock_lock_lot
+#: field:wiz.lock.lot,display_name:0
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: stock_lock_lot
 #: field:wiz.lock.lot,id:0
 msgid "ID"
 msgstr "ID"
@@ -93,6 +99,11 @@ msgid ""
 "If you block this Serial Number/Lot, all its reservations will be removed, "
 "and the pending stock moves will be marked 'unavailable'."
 msgstr ""
+
+#. module: stock_lock_lot
+#: field:wiz.lock.lot,__last_update:0
+msgid "Last Modified on"
+msgstr "Última modificación el"
 
 #. module: stock_lock_lot
 #: field:wiz.lock.lot,write_uid:0
@@ -122,7 +133,7 @@ msgstr "Lote/nº de serie"
 #. module: stock_lock_lot
 #: selection:stock.production.lot,lock_reason:0
 msgid "None"
-msgstr ""
+msgstr "Ninguno"
 
 #. module: stock_lock_lot
 #: view:stock.production.lot:stock_lock_lot.search_product_lot_filter_inh_locklot

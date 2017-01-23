@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bank-payment (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-03 05:04+0000\n"
-"PO-Revision-Date: 2016-09-09 12:25+0000\n"
+"POT-Creation-Date: 2016-12-24 00:27+0000\n"
+"PO-Revision-Date: 2016-12-27 08:21+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: Estonian (http://www.transifex.com/oca/OCA-bank-payment-8-0/language/et/)\n"
 "MIME-Version: 1.0\n"
@@ -101,13 +101,13 @@ msgstr ""
 #: field:bank.payment.line,create_uid:0 field:payment.manual,create_uid:0
 #: field:payment.mode.type,create_uid:0
 msgid "Created by"
-msgstr ""
+msgstr "Loonud"
 
 #. module: account_banking_payment_export
 #: field:bank.payment.line,create_date:0 field:payment.manual,create_date:0
 #: field:payment.mode.type,create_date:0
 msgid "Created on"
-msgstr ""
+msgstr "Loodud"
 
 #. module: account_banking_payment_export
 #: field:bank.payment.line,currency:0
@@ -128,7 +128,7 @@ msgstr ""
 #: field:bank.payment.line,display_name:0 field:payment.manual,display_name:0
 #: field:payment.mode.type,display_name:0
 msgid "Display Name"
-msgstr ""
+msgstr "Näidatav nimi"
 
 #. module: account_banking_payment_export
 #: selection:payment.mode,default_date_type:0
@@ -146,7 +146,7 @@ msgid "Entry Information"
 msgstr ""
 
 #. module: account_banking_payment_export
-#: code:addons/account_banking_payment_export/wizard/payment_order_create.py:152
+#: code:addons/account_banking_payment_export/wizard/payment_order_create.py:156
 #, python-format
 msgid "Entry Lines"
 msgstr ""
@@ -176,7 +176,7 @@ msgstr ""
 #: field:bank.payment.line,id:0 field:payment.manual,id:0
 #: field:payment.mode.type,id:0
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: account_banking_payment_export
 #: help:bank.payment.line,date:0
@@ -205,7 +205,7 @@ msgstr ""
 #. module: account_banking_payment_export
 #: model:ir.model,name:account_banking_payment_export.model_account_invoice
 msgid "Invoice"
-msgstr ""
+msgstr "Arve"
 
 #. module: account_banking_payment_export
 #: view:account.move.line:account_banking_payment_export.payment_order_populate_view_move_line_tree
@@ -239,19 +239,19 @@ msgstr ""
 #: field:payment.manual,__last_update:0
 #: field:payment.mode.type,__last_update:0
 msgid "Last Modified on"
-msgstr ""
+msgstr "Viimati muudetud"
 
 #. module: account_banking_payment_export
 #: field:bank.payment.line,write_uid:0 field:payment.manual,write_uid:0
 #: field:payment.mode.type,write_uid:0
 msgid "Last Updated by"
-msgstr ""
+msgstr "Viimati uuendatud"
 
 #. module: account_banking_payment_export
 #: field:bank.payment.line,write_date:0 field:payment.manual,write_date:0
 #: field:payment.mode.type,write_date:0
 msgid "Last Updated on"
-msgstr ""
+msgstr "Viimati uuendatud"
 
 #. module: account_banking_payment_export
 #: view:payment.mode:account_banking_payment_export.view_payment_mode_form_inherit
@@ -282,7 +282,7 @@ msgstr ""
 #. module: account_banking_payment_export
 #: field:payment.mode.type,name:0
 msgid "Name"
-msgstr ""
+msgstr "Nimi"
 
 #. module: account_banking_payment_export
 #: view:payment.mode:account_banking_payment_export.view_payment_mode_form_inherit
@@ -318,11 +318,16 @@ msgstr ""
 #. module: account_banking_payment_export
 #: field:bank.payment.line,partner_id:0
 msgid "Partner"
-msgstr ""
+msgstr "Partner"
 
 #. module: account_banking_payment_export
 #: view:payment.order:account_banking_payment_export.view_payment_order_form
 msgid "Partner Bank Account"
+msgstr ""
+
+#. module: account_banking_payment_export
+#: field:payment.order.create,partner_ids:0
+msgid "Partners"
 msgstr ""
 
 #. module: account_banking_payment_export
@@ -377,7 +382,7 @@ msgid "Payment Order Export"
 msgstr ""
 
 #. module: account_banking_payment_export
-#: code:addons/account_banking_payment_export/wizard/payment_order_create.py:245
+#: code:addons/account_banking_payment_export/wizard/payment_order_create.py:249
 #, python-format
 msgid "Payment Orders"
 msgstr ""

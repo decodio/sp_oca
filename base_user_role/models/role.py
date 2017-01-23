@@ -1,65 +1,83 @@
 # -*- coding: utf-8 -*-
-##############################################################################
-#
-#    OpenERP, Open Source Management Solution
-#    Copyright (C) 2014 ABF OSIELL SARL (http://osiell.com).
-#                       Sebastien Alix <contact@osiell.com>
-#
-#    This program is free software: you can redistribute it and/or modify
-#    it under the terms of the GNU Affero General Public License as
-#    published by the Free Software Foundation, either version 3 of the
-#    License, or (at your option) any later version.
-#
-#    This program is distributed in the hope that it will be useful,
-#    but WITHOUT ANY WARRANTY; without even the implied warranty of
-#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#    GNU Affero General Public License for more details.
-#
-#    You should have received a copy of the GNU Affero General Public License
-#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
-#
-##############################################################################
+# Copyright 2014 ABF OSIELL <http://osiell.com>
+# License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
-from openerp.osv import osv, fields
+import datetime
+import logging
+
+from openerp import api, fields, models
 
 
-class res_users_role(osv.Model):
+_logger = logging.getLogger(__name__)
+
+
+class ResUsersRole(models.Model):
     _name = 'res.users.role'
     _inherits = {'res.groups': 'group_id'}
     _description = "User role"
 
-    _columns = {
-        'group_id': fields.many2one(
-            'res.groups', required=True, ondelete='cascade',
-            readonly=True, string=u"Associated group"),
-        'user_ids': fields.many2many(
-            'res.users',
-            'res_users_role_user_rel',
-            'role_id', 'user_id',
-            string=u"Users"),
-    }
+    group_id = fields.Many2one(
+        'res.groups', required=True, ondelete='cascade',
+        readonly=True, string=u"Associated group")
+    line_ids = fields.One2many(
+        'res.users.role.line', 'role_id', string=u"Users")
+    user_ids = fields.One2many(
+        'res.users', string=u"Users", compute='_compute_user_ids')
 
-    def create(self, cr, uid, vals, context=None):
-        new_id = super(res_users_role, self).create(
-            cr, uid, vals, context=context)
-        self.update_users(cr, uid, [new_id], context=context)
-        return new_id
+    @api.multi
+    @api.depends('line_ids.user_id')
+    def _compute_user_ids(self):
+        for role in self:
+            role.user_ids = role.line_ids.mapped('user_id')
 
-    def write(self, cr, uid, ids, vals, context=None):
-        res = super(res_users_role, self).write(
-            cr, uid, ids, vals, context=context)
-        self.update_users(cr, uid, ids, context=context)
+    @api.model
+    def create(self, vals):
+        new_record = super(ResUsersRole, self).create(vals)
+        new_record.update_users()
+        return new_record
+
+    @api.multi
+    def write(self, vals):
+        res = super(ResUsersRole, self).write(vals)
+        self.update_users()
         return res
 
-    def update_users(self, cr, uid, ids, context=None):
+    @api.multi
+    def update_users(self):
         """Update all the users concerned by the roles identified by `ids`."""
-        if context is None:
-            context = {}
-        user_model = self.pool.get('res.users')
-        user_ids = []
-        for role in self.browse(cr, uid, ids, context=context):
-            user_ids.extend([user.id for user in role.user_ids])
-        if user_ids:
-            user_model.set_groups_from_roles(
-                cr, uid, user_ids, context=context)
+        users = self.mapped('user_ids')
+        users.set_groups_from_roles()
         return True
+
+    @api.model
+    def cron_update_users(self):
+        logging.info(u"Update user roles")
+        self.search([]).update_users()
+
+
+class ResUsersRoleLine(models.Model):
+    _name = 'res.users.role.line'
+    _description = 'Users associated to a role'
+
+    role_id = fields.Many2one(
+        'res.users.role', string=u"Role", ondelete='cascade')
+    user_id = fields.Many2one(
+        'res.users', string=u"User")
+    date_from = fields.Date(u"From")
+    date_to = fields.Date(u"To")
+    is_enabled = fields.Boolean(u"Enabled", compute='_compute_is_enabled')
+
+    @api.multi
+    @api.depends('date_from', 'date_to')
+    def _compute_is_enabled(self):
+        today = datetime.date.today()
+        for role_line in self:
+            role_line.is_enabled = True
+            if role_line.date_from:
+                date_from = fields.Date.from_string(role_line.date_from)
+                if date_from > today:
+                    role_line.is_enabled = False
+            if role_line.date_to:
+                date_to = fields.Date.from_string(role_line.date_to)
+                if today > date_to:
+                    role_line.is_enabled = False

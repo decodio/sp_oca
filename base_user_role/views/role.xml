@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2014 ABF OSIELL <http://osiell.com>
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
 <openerp>
     <data>
 
@@ -17,7 +19,14 @@
                                 <field name="implied_ids" nolabel="1"/>
                             </page>
                             <page string="Users">
-                                <field name="user_ids" nolabel="1"/>
+                                <field name="line_ids" nolabel="1">
+                                    <tree editable="bottom" colors="grey: not is_enabled;">
+                                        <field name="user_id"/>
+                                        <field name="date_from"/>
+                                        <field name="date_to"/>
+                                        <field name="is_enabled"/>
+                                    </tree>
+                                </field>
                             </page>
                         </notebook>
                     </sheet>

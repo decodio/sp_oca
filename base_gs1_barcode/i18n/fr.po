@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: stock-logistics-barcode (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-10-20 19:06+0000\n"
-"PO-Revision-Date: 2015-10-19 07:59+0000\n"
+"POT-Creation-Date: 2016-08-15 23:13+0000\n"
+"PO-Revision-Date: 2016-09-16 21:46+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: French (http://www.transifex.com/oca/OCA-stock-logistics-barcode-8-0/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -278,12 +278,12 @@ msgstr ""
 #. module: base_gs1_barcode
 #: field:gs1_barcode,create_uid:0
 msgid "Created by"
-msgstr ""
+msgstr "Créé par"
 
 #. module: base_gs1_barcode
 #: field:gs1_barcode,create_date:0
 msgid "Created on"
-msgstr ""
+msgstr "Date"
 
 #. module: base_gs1_barcode
 #: model:gs1_barcode,name:base_gs1_barcode.CUSTOMER_PART
@@ -308,7 +308,7 @@ msgstr "Type de données"
 #. module: base_gs1_barcode
 #: selection:gs1_barcode,data_type:0
 msgid "Date"
-msgstr ""
+msgstr "Date"
 
 #. module: base_gs1_barcode
 #: model:gs1_barcode,name:base_gs1_barcode.DATE_PRODUCTION
@@ -324,6 +324,11 @@ msgstr "Indicateur de décimale"
 #: field:gs1_barcode,name:0
 msgid "Description"
 msgstr "Description"
+
+#. module: base_gs1_barcode
+#: field:gs1_barcode,display_name:0
+msgid "Display Name"
+msgstr "Nom à afficher"
 
 #. module: base_gs1_barcode
 #: model:gs1_barcode,name:base_gs1_barcode.DUE_DATE
@@ -405,7 +410,7 @@ msgstr "Séparateur de groupes"
 #. module: base_gs1_barcode
 #: field:gs1_barcode,id:0
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #. module: base_gs1_barcode
 #: model:gs1_barcode,name:base_gs1_barcode.PHYSICAL_LOCATION_ID
@@ -477,14 +482,19 @@ msgid "International Bank Account Number"
 msgstr ""
 
 #. module: base_gs1_barcode
+#: field:gs1_barcode,__last_update:0
+msgid "Last Modified on"
+msgstr "Dernière modification le"
+
+#. module: base_gs1_barcode
 #: field:gs1_barcode,write_uid:0
 msgid "Last Updated by"
-msgstr ""
+msgstr "Dernière mise à jour par"
 
 #. module: base_gs1_barcode
 #: field:gs1_barcode,write_date:0
 msgid "Last Updated on"
-msgstr ""
+msgstr "Dernière mise à jour le"
 
 #. module: base_gs1_barcode
 #: model:gs1_barcode,name:base_gs1_barcode.VARIATION

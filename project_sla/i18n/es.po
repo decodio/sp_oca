@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: project (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-02 14:58+0000\n"
-"PO-Revision-Date: 2016-09-16 21:45+0000\n"
+"POT-Creation-Date: 2016-10-17 13:09+0000\n"
+"PO-Revision-Date: 2016-11-25 14:55+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: Spanish (http://www.transifex.com/oca/OCA-project-8-0/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -77,7 +77,7 @@ msgstr ""
 #. module: project_sla
 #: field:project.sla.control,sla_close_date:0
 msgid "Close Date"
-msgstr ""
+msgstr "Fecha de Cierre"
 
 #. module: project_sla
 #: field:project.sla.line,condition:0
@@ -149,7 +149,7 @@ msgstr ""
 #: selection:project.sla.controlled,sla_state:0
 #: selection:project.sla.report,sla_state:0 selection:project.task,sla_state:0
 msgid "Failed"
-msgstr ""
+msgstr "Fallido"
 
 #. module: project_sla
 #: field:project.sla.report,failed_count:0

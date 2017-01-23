@@ -4,6 +4,7 @@
 # 
 # Translators:
 # Ahmet Altinisik <aaltinisik@altinkaya.com.tr>, 2013,2015
+# Ahmet Altinisik <aaltinisik@altinkaya.com.tr>, 2013,2015
 # Ahmet Altinisik <aaltinisik@altinkaya.com.tr>, 2013
 # Antonio Trueba, 2016
 # Antonio Trueba, 2016
@@ -24,12 +25,13 @@
 # Stéphane Bidoul <sbi@skynet.be>, 2015
 # Yael Terrettaz, 2015
 # yterrettaz, 2015
+# yterrettaz, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: account-financial-tools (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-14 00:45+0000\n"
-"PO-Revision-Date: 2016-09-16 21:45+0000\n"
+"POT-Creation-Date: 2016-12-09 23:20+0000\n"
+"PO-Revision-Date: 2016-12-16 00:24+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: Spanish (http://www.transifex.com/oca/OCA-account-financial-tools-8-0/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -62,7 +64,7 @@ msgstr "Devolver a borrador"
 #: view:account.check.deposit:account_check_deposit.view_check_deposit_search
 #: field:account.check.deposit,partner_bank_id:0
 msgid "Bank Account"
-msgstr ""
+msgstr "Cuenta bancaria"
 
 #. module: account_check_deposit
 #: view:website:account_check_deposit.report_checkdeposit
@@ -205,7 +207,7 @@ msgstr "Borrador"
 #. module: account_check_deposit
 #: view:account.check.deposit:account_check_deposit.view_check_deposit_search
 msgid "Group By"
-msgstr ""
+msgstr "Agrupar por"
 
 #. module: account_check_deposit
 #: field:account.check.deposit,id:0
@@ -282,7 +284,7 @@ msgstr ""
 #. module: account_check_deposit
 #: field:account.check.deposit,is_reconcile:0
 msgid "Reconcile"
-msgstr ""
+msgstr "Conciliación"
 
 #. module: account_check_deposit
 #: view:website:account_check_deposit.report_checkdeposit

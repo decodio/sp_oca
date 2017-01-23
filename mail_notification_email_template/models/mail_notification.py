@@ -33,6 +33,7 @@ class MailNotification(models.Model):
                 continue
             custom_values = {
                 'references': message.parent_id.message_id,
+                'author_id': message.author_id.id
             }
             if message.res_id and hasattr(
                 self.env[message.model], 'message_get_email_values'
@@ -65,5 +66,5 @@ class MailNotification(models.Model):
                 }),
                 this.partner_id
             )
-            for a in etree.HTML(link_html).xpath('//a[@href]'):
+            for a in etree.HTML(link_html or '<html/>').xpath('//a[@href]'):
                 this.record_access_link = a.get('href')

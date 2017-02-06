@@ -1,7 +1,7 @@
 .openerp .oe_sidebar .oe_dropdown_menu li .oe-sidebar-attachment-preview
 {
     position: absolute;
-    right: 18px;
+    left: 1px;
     top: 0px;
     display: none;
 }

@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from openerp.osv import osv
-from openerp.addons.list_multiheader.base import VIEW_TYPE
+from openerp.addons.list_multiheader.base import MULTIHEADER_VIEW
 
 
 class IrUiView(osv.Model):
@@ -11,7 +11,7 @@ class IrUiView(osv.Model):
         if hasattr(obj, 'get_export_header'):
             return obj.get_export_header(cr, uid, doc, **kwargs)
         cellfilled = []
-        if kwargs.get('view_type') == VIEW_TYPE[0]:
+        if kwargs.get('view_type') == MULTIHEADER_VIEW[0]:
             for header in kwargs.get('headers'):
                 row = doc.AddRow()
                 for c in header:

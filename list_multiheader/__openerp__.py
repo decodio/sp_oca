@@ -56,17 +56,13 @@ TODO
         'base',
         'web',
     ],
-    'data': [
-    ],
-    'js': [
-        'static/src/js/list_multiheader.js',
-    ],
     'qweb': [
         'static/src/xml/list_multiheader.xml',
     ],
-    'css': [
-        'static/src/css/list_multiheader.css',
+    'data': [
+        'views/list_multiheader.xml',
     ],
+
     'installable': True,
     'application': False,
     'auto_install': False,

@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-17 10:39+0000\n"
-"PO-Revision-Date: 2016-09-17 10:39+0000\n"
+"POT-Creation-Date: 2016-12-17 01:51+0000\n"
+"PO-Revision-Date: 2016-12-17 01:51+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2016\n"
 "Language-Team: Portuguese (Brazil) (https://www.transifex.com/oca/teams/23907/pt_BR/)\n"
 "MIME-Version: 1.0\n"
@@ -79,7 +79,7 @@ msgstr ""
 #. module: base_geoengine
 #: model:ir.ui.menu,name:base_geoengine.geoengine_base_view_menu
 msgid "Configuration"
-msgstr ""
+msgstr "Configuração"
 
 #. module: base_geoengine
 #: field:ir.model.fields,gist_index:0
@@ -122,7 +122,7 @@ msgstr ""
 #. module: base_geoengine
 #: model:ir.model,name:base_geoengine.model_ir_model_fields
 msgid "Fields"
-msgstr ""
+msgstr "Campos"
 
 #. module: base_geoengine
 #. openerp-web
@@ -135,7 +135,7 @@ msgstr ""
 #: view:geoengine.raster.layer:base_geoengine.geo_raster_view_form
 #: view:geoengine.vector.layer:base_geoengine.geo_vector_view_form
 msgid "General"
-msgstr ""
+msgstr "Geral"
 
 #. module: base_geoengine
 #: code:addons/base_geoengine/geo_field.py:89

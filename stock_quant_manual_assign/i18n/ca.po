@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: stock-logistics-warehouse (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-18 03:44+0000\n"
-"PO-Revision-Date: 2016-11-25 14:57+0000\n"
+"POT-Creation-Date: 2017-03-29 09:22+0000\n"
+"PO-Revision-Date: 2017-04-21 14:16+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: Catalan (http://www.transifex.com/oca/OCA-stock-logistics-warehouse-8-0/language/ca/)\n"
 "MIME-Version: 1.0\n"
@@ -43,7 +43,7 @@ msgstr "Creat el"
 #: field:assign.manual.quants,display_name:0
 #: field:assign.manual.quants.lines,display_name:0
 msgid "Display Name"
-msgstr ""
+msgstr "Veure el nom"
 
 #. module: stock_quant_manual_assign
 #: field:assign.manual.quants,id:0 field:assign.manual.quants.lines,id:0
@@ -54,7 +54,7 @@ msgstr "ID"
 #: field:assign.manual.quants,__last_update:0
 #: field:assign.manual.quants.lines,__last_update:0
 msgid "Last Modified on"
-msgstr ""
+msgstr "Darrera modificació el"
 
 #. module: stock_quant_manual_assign
 #: field:assign.manual.quants,write_uid:0
@@ -71,7 +71,7 @@ msgstr "Darrera Actualització el"
 #. module: stock_quant_manual_assign
 #: field:assign.manual.quants.lines,location_id:0
 msgid "Location"
-msgstr ""
+msgstr "Ubicació "
 
 #. module: stock_quant_manual_assign
 #: field:assign.manual.quants.lines,lot_id:0
@@ -98,7 +98,7 @@ msgstr ""
 #. module: stock_quant_manual_assign
 #: field:assign.manual.quants,name:0
 msgid "Name"
-msgstr ""
+msgstr "Nom"
 
 #. module: stock_quant_manual_assign
 #: field:assign.manual.quants.lines,package_id:0
@@ -121,7 +121,7 @@ msgid "Quant"
 msgstr ""
 
 #. module: stock_quant_manual_assign
-#: code:addons/stock_quant_manual_assign/wizard/assign_manual_quants.py:22
+#: code:addons/stock_quant_manual_assign/wizard/assign_manual_quants.py:24
 #, python-format
 msgid "Quantity is higher than the needed one"
 msgstr ""
@@ -149,7 +149,7 @@ msgstr ""
 #. module: stock_quant_manual_assign
 #: model:ir.model,name:stock_quant_manual_assign.model_stock_move
 msgid "Stock Move"
-msgstr ""
+msgstr "Moure l'estoc"
 
 #. module: stock_quant_manual_assign
 #: help:assign.manual.quants.lines,package_id:0

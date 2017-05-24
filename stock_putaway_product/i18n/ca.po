@@ -4,14 +4,15 @@
 # 
 # Translators:
 # OCA Transbot <transbot@odoo-community.org>, 2016
-# Eric Antones <eantones@users.noreply.github.com>, 2016
+# Carles Antoli <carlesantoli@hotmail.com>, 2017
+# Marc Tormo i Bochaca <mtbochaca@gmail.com>, 2017
 msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-18 03:44+0000\n"
-"PO-Revision-Date: 2016-11-18 03:44+0000\n"
-"Last-Translator: Eric Antones <eantones@users.noreply.github.com>, 2016\n"
+"POT-Creation-Date: 2017-03-29 09:22+0000\n"
+"PO-Revision-Date: 2017-03-29 09:22+0000\n"
+"Last-Translator: Marc Tormo i Bochaca <mtbochaca@gmail.com>, 2017\n"
 "Language-Team: Catalan (https://www.transifex.com/oca/teams/23907/ca/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -37,7 +38,7 @@ msgstr "Creat el"
 #. module: stock_putaway_product
 #: field:stock.product.putaway.strategy,display_name:0
 msgid "Display Name"
-msgstr ""
+msgstr "Veure el nom"
 
 #. module: stock_putaway_product
 #: field:product.putaway,product_location_ids:0
@@ -52,7 +53,7 @@ msgstr "ID"
 #. module: stock_putaway_product
 #: field:stock.product.putaway.strategy,__last_update:0
 msgid "Last Modified on"
-msgstr ""
+msgstr "Darrera modificació el"
 
 #. module: stock_putaway_product
 #: field:stock.product.putaway.strategy,write_uid:0
@@ -67,7 +68,7 @@ msgstr "Darrera Actualització el"
 #. module: stock_putaway_product
 #: field:stock.product.putaway.strategy,fixed_location_id:0
 msgid "Location"
-msgstr ""
+msgstr "Ubicació "
 
 #. module: stock_putaway_product
 #: model:ir.model,name:stock_putaway_product.model_product_product
@@ -78,7 +79,7 @@ msgstr "Producte"
 #: model:ir.model,name:stock_putaway_product.model_product_template
 #: field:stock.product.putaway.strategy,product_template_id:0
 msgid "Product Template"
-msgstr ""
+msgstr "Plantilla del producte"
 
 #. module: stock_putaway_product
 #: field:stock.product.putaway.strategy,product_product_id:0

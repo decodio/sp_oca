@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 8.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-18 03:44+0000\n"
-"PO-Revision-Date: 2016-11-18 03:44+0000\n"
+"POT-Creation-Date: 2017-01-07 07:41+0000\n"
+"PO-Revision-Date: 2017-01-07 07:41+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>, 2016\n"
 "Language-Team: Slovak (https://www.transifex.com/oca/teams/23907/sk/)\n"
 "MIME-Version: 1.0\n"
@@ -47,7 +47,7 @@ msgstr ""
 #: view:report.stock.traceability_operation:stock_traceability_operation.report_stock_traceability_operation_search
 #: field:report.stock.traceability_operation,date:0
 msgid "Date"
-msgstr ""
+msgstr "Dátum"
 
 #. module: stock_traceability_operation
 #: view:report.stock.traceability_operation:stock_traceability_operation.report_stock_traceability_operation_search
@@ -84,7 +84,7 @@ msgstr "Zobraziť meno"
 #: view:report.stock.traceability_operation:stock_traceability_operation.report_stock_traceability_operation_search
 #: selection:report.stock.traceability_operation,state:0
 msgid "Done"
-msgstr ""
+msgstr "Hotovo"
 
 #. module: stock_traceability_operation
 #: field:report.stock.traceability_operation,date_expected:0
@@ -154,7 +154,7 @@ msgstr ""
 #. module: stock_traceability_operation
 #: view:report.stock.traceability_operation:stock_traceability_operation.report_stock_traceability_operation_search
 msgid "Partner"
-msgstr ""
+msgstr "Partner"
 
 #. module: stock_traceability_operation
 #: field:report.stock.traceability_operation,picking_type_id:0
@@ -214,7 +214,7 @@ msgstr ""
 #: view:report.stock.traceability_operation:stock_traceability_operation.report_stock_traceability_operation_search
 #: field:report.stock.traceability_operation,origin:0
 msgid "Source"
-msgstr ""
+msgstr "Zdroj"
 
 #. module: stock_traceability_operation
 #: field:report.stock.traceability_operation,location_id:0

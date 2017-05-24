@@ -12,9 +12,9 @@ inventory revaluation.
 You can re-valuate inventory values by:
 
 * Changing the inventory valuation of a specific product. The cost price
- is changed, and the inventory value is recalculated according to the new
- price. In case of real price, you can select on which quants you want to
- change the unit cost.
+  is changed, and the inventory value is recalculated according to the new
+  price. In case of real price, you can select on which quants you want to
+  change the unit cost.
 
 * Changing the value of the inventory. The quantity of inventory remains
   unchanged, resulting in a change in the price.
@@ -50,6 +50,15 @@ Usage
 .. image:: https://odoo-community.org/website/image/ir.attachment/5784_f2813bd/datas
    :alt: Try me on Runbot
    :target: https://runbot.odoo-community.org/runbot/154/8.0
+
+Known issues / Roadmap
+======================
+
+* A negative quant can be revaluated, but can also ultimately be merged with
+  a positive quant. In that case, the associated revaluation quant record
+  will be removed. In a future version a chatter could be added to the stock
+  inventory revaluation, and this kind of action would be logged for better
+  traceability.
 
 Bug Tracker
 ===========

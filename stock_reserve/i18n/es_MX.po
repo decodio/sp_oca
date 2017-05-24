@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: stock-logistics-warehouse (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-18 03:44+0000\n"
-"PO-Revision-Date: 2016-10-11 09:48+0000\n"
+"POT-Creation-Date: 2017-03-29 09:22+0000\n"
+"PO-Revision-Date: 2017-04-25 10:40+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: Spanish (Mexico) (http://www.transifex.com/oca/OCA-stock-logistics-warehouse-8-0/language/es_MX/)\n"
 "MIME-Version: 1.0\n"
@@ -78,7 +78,7 @@ msgstr ""
 #. module: stock_reserve
 #: field:stock.reservation,company_id:0
 msgid "Company"
-msgstr ""
+msgstr "Compañía"
 
 #. module: stock_reserve
 #: field:stock.reservation,create_uid:0
@@ -93,7 +93,7 @@ msgstr "Creado en"
 #. module: stock_reserve
 #: field:stock.reservation,date:0
 msgid "Date"
-msgstr ""
+msgstr "Fecha"
 
 #. module: stock_reserve
 #: field:stock.reservation,name:0
@@ -133,7 +133,7 @@ msgstr "Nombre desplegado"
 #. module: stock_reserve
 #: view:stock.reservation:stock_reserve.view_stock_reservation_search
 msgid "Draft"
-msgstr ""
+msgstr "Borrador"
 
 #. module: stock_reserve
 #: field:stock.reservation,date_expected:0
@@ -316,7 +316,7 @@ msgstr ""
 #. module: stock_reserve
 #: field:stock.reservation,procurement_id:0
 msgid "Procurement"
-msgstr ""
+msgstr "Contratación"
 
 #. module: stock_reserve
 #: field:stock.reservation,group_id:0
@@ -339,7 +339,7 @@ msgstr ""
 #: model:ir.model,name:stock_reserve.model_product_template
 #: field:stock.reservation,product_tmpl_id:0
 msgid "Product Template"
-msgstr ""
+msgstr "Plantilla del producto"
 
 #. module: stock_reserve
 #: field:stock.reservation,product_uos:0
@@ -400,7 +400,7 @@ msgstr ""
 #. module: stock_reserve
 #: field:stock.reservation,picking_id:0
 msgid "Reference"
-msgstr ""
+msgstr "Referencia"
 
 #. module: stock_reserve
 #: view:stock.reservation:stock_reserve.view_stock_reservation_form
@@ -495,7 +495,7 @@ msgstr ""
 #: view:stock.reservation:stock_reserve.view_stock_reservation_search
 #: field:stock.reservation,state:0
 msgid "Status"
-msgstr ""
+msgstr "Estado"
 
 #. module: stock_reserve
 #: model:ir.model,name:stock_reserve.model_stock_reservation

@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: stock-logistics-warehouse (8.0)\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-11-18 03:44+0000\n"
-"PO-Revision-Date: 2016-11-25 14:58+0000\n"
+"POT-Creation-Date: 2017-03-29 09:22+0000\n"
+"PO-Revision-Date: 2017-04-25 10:42+0000\n"
 "Last-Translator: OCA Transbot <transbot@odoo-community.org>\n"
 "Language-Team: Portuguese (http://www.transifex.com/oca/OCA-stock-logistics-warehouse-8-0/language/pt/)\n"
 "MIME-Version: 1.0\n"
@@ -78,7 +78,7 @@ msgstr ""
 #. module: stock_reserve
 #: field:stock.reservation,company_id:0
 msgid "Company"
-msgstr ""
+msgstr "Empresa"
 
 #. module: stock_reserve
 #: field:stock.reservation,create_uid:0
@@ -93,12 +93,12 @@ msgstr "Criado em"
 #. module: stock_reserve
 #: field:stock.reservation,date:0
 msgid "Date"
-msgstr ""
+msgstr "Data"
 
 #. module: stock_reserve
 #: field:stock.reservation,name:0
 msgid "Description"
-msgstr ""
+msgstr "Descrição"
 
 #. module: stock_reserve
 #: field:stock.reservation,partner_id:0
@@ -133,7 +133,7 @@ msgstr "Nome"
 #. module: stock_reserve
 #: view:stock.reservation:stock_reserve.view_stock_reservation_search
 msgid "Draft"
-msgstr ""
+msgstr "Rascunho"
 
 #. module: stock_reserve
 #: field:stock.reservation,date_expected:0
@@ -333,7 +333,7 @@ msgstr ""
 #: view:stock.reservation:stock_reserve.view_stock_reservation_search
 #: field:stock.reservation,product_id:0
 msgid "Product"
-msgstr ""
+msgstr "Produto"
 
 #. module: stock_reserve
 #: model:ir.model,name:stock_reserve.model_product_template
@@ -365,7 +365,7 @@ msgstr ""
 #: field:stock.reservation,product_qty:0
 #: field:stock.reservation,product_uom_qty:0
 msgid "Quantity"
-msgstr ""
+msgstr "Quantidade"
 
 #. module: stock_reserve
 #: field:stock.reservation,product_uos_qty:0
@@ -400,7 +400,7 @@ msgstr ""
 #. module: stock_reserve
 #: field:stock.reservation,picking_id:0
 msgid "Reference"
-msgstr ""
+msgstr "Referência"
 
 #. module: stock_reserve
 #: view:stock.reservation:stock_reserve.view_stock_reservation_form
@@ -495,7 +495,7 @@ msgstr ""
 #: view:stock.reservation:stock_reserve.view_stock_reservation_search
 #: field:stock.reservation,state:0
 msgid "Status"
-msgstr ""
+msgstr "Estado"
 
 #. module: stock_reserve
 #: model:ir.model,name:stock_reserve.model_stock_reservation
@@ -578,7 +578,7 @@ msgstr ""
 #. module: stock_reserve
 #: view:stock.reservation:stock_reserve.view_stock_reservation_tree
 msgid "Total"
-msgstr ""
+msgstr "Total"
 
 #. module: stock_reserve
 #: field:stock.reservation,picking_type_code:0
@@ -593,7 +593,7 @@ msgstr ""
 #. module: stock_reserve
 #: field:stock.reservation,product_uom:0
 msgid "Unit of Measure"
-msgstr ""
+msgstr "Unidade de Medida"
 
 #. module: stock_reserve
 #: field:stock.reservation,date_validity:0

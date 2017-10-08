@@ -300,8 +300,8 @@ class asterisk_server(orm.Model):
     def get_record_from_my_channel(self, cr, uid, context=None):
         calling_number = self.pool['asterisk.server']._get_calling_number(
             cr, uid, context=context)
-        #calling_number = "0641981246"
-        calling_number = "+38511111500"
+        # calling_number = "0641981246"
+        # calling_number = "+38511111500"
         if calling_number:
             record = self.pool['phone.common'].get_record_from_phone_number(
                 cr, uid, calling_number, context=context)

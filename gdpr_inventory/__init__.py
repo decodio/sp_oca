@@ -1,2 +1,0 @@
-import gdpr
-#import report

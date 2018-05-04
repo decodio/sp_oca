@@ -13,6 +13,7 @@
             />
             <field name="arch" type="xml">
                 <field name="base" position="replace">
+                    <field name="base" invisible="1"/>
                     <field name="base_ext" />
                 </field>
             </field>

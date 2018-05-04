@@ -31,7 +31,10 @@ class IrAttachment(models.Model):
 
     @api.model
     def _selection_res_reference(self):
-        return self.env['ir.model'].search([
-            ('osv_memory', '=', False),
-            ('access_ids.group_id.users', '=', self.env.uid)
-        ]).mapped(lambda rec: (rec.model, rec.name))
+        if self.pool.ready:
+            return self.env['ir.model'].search([
+                ('osv_memory', '=', False),
+                ('access_ids.group_id.users', '=', self.env.uid)
+            ]).mapped(lambda rec: (rec.model, rec.name))
+        else:
+            return []

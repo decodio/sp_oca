@@ -1,3 +1,7 @@
+/* © 2014-2016 ACSONE SA/NV
+ * License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). 
+ */
+
 openerp.mis_builder = function(instance) {
 
     instance.mis_builder.MisReport = instance.web.form.FormWidget.extend({
@@ -26,7 +30,6 @@ openerp.mis_builder = function(instance) {
             self.mis_report_instance_id = self.getParent().datarecord.id
             if (self.mis_report_instance_id) {
                 self.getParent().dataset.context['no_destroy'] = true;
-                self.generate_content();
             } else {
                 self.display_settings();
             }

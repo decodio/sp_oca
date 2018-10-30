@@ -408,6 +408,9 @@ class AuditlogRule(models.Model):
             else:
                 field_data = field.read(load='_classic_write')[0]
                 cache[model.model][field_name] = field_data
+        if cache[model.model][field_name] and cache[model.model][field_name].get('relation', False):
+            if self.env[cache[model.model][field_name]['relation']]._auto == False:
+                cache[model.model][field_name] = False
         return cache[model.model][field_name]
 
     def _create_log_line_on_read(

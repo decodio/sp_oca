@@ -267,6 +267,19 @@ class asterisk_server(orm.Model):
                     _logger.debug("Found a matching Event in 'Up' state")
                     calling_party_number = chan.get('CallerIDNum')
                     break
+                if (
+                        chan.get('ChannelStateDesc') == 'Ring' and
+                        chan.get('DNID') == user.internal_number):
+                    _logger.debug("Found a matching Event in 'Up' state")
+                    calling_party_number = chan.get('CallerIDNum')
+                    break
+
+                if (
+                        chan.get('ChannelStateDesc') == 'Up' and
+                        sip_account in chan.get('Data', '')):
+                    _logger.debug("Found a matching Event in 'Up' state")
+                    calling_party_number = chan.get('CallerIDNum')
+                    break
         except Exception, e:
             _logger.error(
                 "Error in the Status request to Asterisk server %s"
@@ -288,6 +301,7 @@ class asterisk_server(orm.Model):
         calling_number = self.pool['asterisk.server']._get_calling_number(
             cr, uid, context=context)
         # calling_number = "0641981246"
+        # calling_number = "+38511111500"
         if calling_number:
             record = self.pool['phone.common'].get_record_from_phone_number(
                 cr, uid, calling_number, context=context)

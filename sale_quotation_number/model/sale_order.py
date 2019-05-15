@@ -22,26 +22,27 @@
 from openerp import models, api
 
 
-class SaleOrder(models.Model):
+class sale_order(models.Model):
     _inherit = "sale.order"
 
-    @api.one
+    @api.multi
     def copy(self, default=None):
+        self.ensure_one()
         if default is None:
             default = {}
         default['name'] = '/'
-        return super(SaleOrder, self).copy(default=default)
+        return super(sale_order, self).copy(default=default)
 
     @api.model
     def create(self, vals):
         if vals.get('name', '/') == '/':
             vals['name'] = self.env['ir.sequence'].next_by_code(
                 'sale.quotation') or '/'
-        return super(SaleOrder, self).create(vals)
+        return super(sale_order, self).create(vals)
 
     @api.multi
     def action_wait(self):
-        if super(SaleOrder, self).action_wait():
+        if super(sale_order, self).action_wait():
             for sale in self:
                 quo = sale.name
                 sale.write({

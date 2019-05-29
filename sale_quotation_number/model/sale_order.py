@@ -25,13 +25,14 @@ from openerp import models, api
 class sale_order(models.Model):
     _inherit = "sale.order"
 
-    @api.multi
-    def copy(self, default=None):
-        self.ensure_one()
-        if default is None:
-            default = {}
-        default['name'] = '/'
-        return super(sale_order, self).copy(default=default)
+    # BOLE: because of: got an unexpected keyword argument 'default'
+    # @api.one
+    # def copy(self, default=None):
+    #     #self.ensure_one()
+    #     if default is None:
+    #         default = {}
+    #     default['name'] = '/'
+    #     return super(sale_order, self).copy(default=default)
 
     @api.model
     def create(self, vals):

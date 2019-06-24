@@ -160,6 +160,7 @@ class ProfilerController(http.Controller):
         exclude_query = self.get_exclude_query()
         dbname = cursor.dbname
         command = [
+            # 'sudo', # BOLE: 700 on log file!
             pgbadger, '-f', 'stderr', '-T', 'Odoo-Profiler',
             '-o', '-', '-d', dbname, '-b', ProfilerController.begin_date,
             '-e', ProfilerController.end_date, '--sample', '2',

@@ -125,7 +125,7 @@ class PurchaseOrder(models.Model):
             self.picking_type_id.warehouse_id and
             self.picking_type_id.warehouse_id.partner_id and
             self.picking_type_id.warehouse_id.partner_id.id or False)
-        return {
+        res = {
             'name': (
                 self.env['ir.sequence'].next_by_code('sale.order') or '/'
             ),
@@ -143,8 +143,13 @@ class PurchaseOrder(models.Model):
             'partner_shipping_id': (direct_delivery_address or
                                     partner_shipping_id or
                                     partner_addr['delivery']),
-            'note': self.notes
+            'note': self.notes,
+            # no need - in stock_base added create method !
+            # 'picking_type_id': dest_company.warehouse_id and
+            #                    dest_company.warehouse_id.out_type_id and
+            #                    dest_company.warehouse_id.out_type_id.id or False
         }
+        return res
 
     @api.model
     def _prepare_sale_order_line_data(

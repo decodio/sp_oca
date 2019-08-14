@@ -1,0 +1,169 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# * purchase_sale_inter_company
+#
+# Translators:
+# AnaMaria Olujić <ana-maria.olujic@decod.io>, 2019
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 8.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-10-19 00:51+0000\n"
+"PO-Revision-Date: 2017-10-19 00:51+0000\n"
+"Last-Translator: Matjaž Mozetič <m.mozetic@matmoz.si>, 2017\n"
+"Language-Team: Slovenian (https://www.transifex.com/oca/teams/23907/sl/)\n"
+"Language: sl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
+"%100==4 ? 2 : 3);\n"
+
+#. module: purchase_sale_inter_company
+#: model:ir.model,name:purchase_sale_inter_company.model_res_company
+msgid "Companies"
+msgstr "Tvrtke"
+
+#. module: purchase_sale_inter_company
+#: code:addons/purchase_sale_inter_company/models/purchase_order.py:123
+#, python-format
+msgid ""
+"Configure correct warehouse for company (%s) in Menu: Settings/companies/"
+"companies"
+msgstr ""
+"Postavite točno skladište za tvrtku (%s) u izborniku: Postavke/Tvrtke/"
+"Tvrtka"
+
+#. module: purchase_sale_inter_company
+#: help:res.company,warehouse_id:0
+msgid ""
+"Default value to set on Sale Orders that will be created based on Purchase "
+"Orders made to this company"
+msgstr ""
+"Predefinirane vrijednosti na prodajnom nalogu koje će biti kreirane prema "
+"narudžbenicama kreiranim u ovoj tvrtci."
+
+#. module: purchase_sale_inter_company
+#: help:base.config.settings,warehouse_id:0
+msgid ""
+"Default value to set on Sale Orders that will be created based on Purchase "
+"Orders made to this company."
+msgstr ""
+"Predefinirane vrijednosti na prodajnom nalogu koje će biti kreirane prema "
+"narudžbenicama kreiranim u ovoj tvrtci."
+
+#. module: purchase_sale_inter_company
+#: model:ir.model,name:purchase_sale_inter_company.model_account_invoice
+msgid "Invoice"
+msgstr "Račun"
+
+#. module: purchase_sale_inter_company
+#: model:stock.location,name:purchase_sale_inter_company.location_output_company_a
+msgid "Output - A"
+msgstr "Izlaz - A"
+
+#. module: purchase_sale_inter_company
+#: model:stock.location,name:purchase_sale_inter_company.location_output_company_b
+msgid "Output - B"
+msgstr "Izlaz - B"
+
+#. module: purchase_sale_inter_company
+#: model:ir.model,name:purchase_sale_inter_company.model_purchase_order
+msgid "Purchase Order"
+msgstr "Nalog za nabavu"
+
+#. module: purchase_sale_inter_company
+#: view:res.company:purchase_sale_inter_company.view_company_inter_change_inherit_form
+msgid "Purchase to Sale"
+msgstr "Od nabave do prodaje"
+
+#. module: purchase_sale_inter_company
+#: field:res.company,sale_auto_validation:0
+msgid "Sale Auto Validation"
+msgstr "Automatska potvrda prodaje"
+
+#. module: purchase_sale_inter_company
+#: field:base.config.settings,sale_auto_validation:0
+msgid "Sale Orders Auto Validation"
+msgstr "Automatska potvrda prodajnog naloga"
+
+#. module: purchase_sale_inter_company
+#: model:ir.model,name:purchase_sale_inter_company.model_sale_order
+msgid "Sales Order"
+msgstr "Prodajni nalog"
+
+#. module: purchase_sale_inter_company
+#: model:ir.model,name:purchase_sale_inter_company.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "Stavke prodajnog naloga"
+
+#. module: purchase_sale_inter_company
+#: field:sale.order,auto_purchase_order_id:0
+msgid "Source Purchase Order"
+msgstr "Izvorni nalog za nabavu"
+
+#. module: purchase_sale_inter_company
+#: field:sale.order.line,auto_purchase_line_id:0
+msgid "Source Purchase Order Line"
+msgstr "Stavke izvornog naloga za nabavu"
+
+#. module: purchase_sale_inter_company
+#: model:stock.location,name:purchase_sale_inter_company.location_stock_company_a
+msgid "Stock - A"
+msgstr "Zaliha - A"
+
+#. module: purchase_sale_inter_company
+#: model:stock.location,name:purchase_sale_inter_company.location_stock_company_b
+msgid "Stock - B"
+msgstr "Zaliha - B"
+
+#. module: purchase_sale_inter_company
+#: field:base.config.settings,warehouse_id:0 field:res.company,warehouse_id:0
+msgid "Warehouse For Sale Orders"
+msgstr "Skladište za prodajne naloge"
+
+#. module: purchase_sale_inter_company
+#: help:res.company,sale_auto_validation:0
+msgid ""
+"When a Sale Order is created by a multi company rule for this company, it "
+"will automatically validate it"
+msgstr ""
+"Kada se prodajni nalog kreira iz konsolidacijskih pravila za ovu tvrtku, "
+"automatski će se potvrditi"
+
+#. module: purchase_sale_inter_company
+#: help:base.config.settings,sale_auto_validation:0
+msgid ""
+"When a Sale Order is created by a multi company rule for this company, it "
+"will automatically validate it."
+msgstr ""
+"Kada se prodajni nalog kreira iz konsolidacijskih pravila za ovu tvrtku, "
+"automatski će se potvrditi"
+
+#. module: purchase_sale_inter_company
+#: code:addons/purchase_sale_inter_company/models/purchase_order.py:52
+#, python-format
+msgid "You cannot create SO from PO because product '%s' is not intercompany"
+msgstr ""
+"Ne možete kreirati prodajni nalog iz narudžbenice jer proizvod "
+"'%s' nije definiran kao konsolidirani."
+
+#. module: purchase_sale_inter_company
+#: code:addons/purchase_sale_inter_company/models/purchase_order.py:74
+#, python-format
+msgid ""
+"You cannot create SO from PO because sale price list currency is different "
+"from purchase price list currency."
+msgstr ""
+"Nije moguće kreirati prodajni nalog iz narudžbenice jer je ""
+"valuta prodajnog cjenika drugačija od nabavnog. "
+
+
+#. module: purchase_sale_inter_company
+#: view:purchase.order:purchase_sale_inter_company.purchase_order_form_account_invoice_inter_company
+msgid ""
+"{'invisible':['|', ('invoice_method','in', ['picking', 'manual', "
+"'intercompany']), '|', ('state','!=', 'approved'), ('invoiced','=',True)]}"
+msgstr ""
+"{'invisible':['|', ('invoice_method','in', ['picking', 'manual', "
+"'intercompany']), '|', ('state','!=', 'approved'), ('invoiced','=',True)]}"

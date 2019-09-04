@@ -381,6 +381,10 @@ class BaseUbl(models.AbstractModel):
                 taxes = product.supplier_taxes_id
             if taxes:
                 for tax in taxes:
+                    if tax.company_id != self.env.user.company_id:
+                        # Multi company case when not all companies need to have
+                        # classified taxes
+                        continue
                     self._ubl_add_tax_category(
                         tax, item, ns, node_name='ClassifiedTaxCategory',
                         version=version)

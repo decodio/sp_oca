@@ -65,6 +65,8 @@ class AccountInvoice(models.Model):
         # merge the line with an existing line
         vals['quantity'] += (new_invoice_line.quantity *
                              uos_factor / uom_factor)
+        if 'stock.move.invoice.line' in self.env.registry:
+            vals['stock_move_invoice_line_ids'] += [(4, stock_move_invoice_line_id.id) for stock_move_invoice_line_id in new_invoice_line.stock_move_invoice_line_ids]
 
     @api.multi
     def do_merge(self, keep_references=True, date_invoice=False):
@@ -152,6 +154,8 @@ class AccountInvoice(models.Model):
                     self._merge_invoice_line_values(o_line, invoice_line)
                 else:
                     # append a new "standalone" line
+                    if 'stock.move.invoice.line' in self.env.registry:
+                        o_line.update({'stock_move_invoice_line_ids': [(4, stock_move_invoice_line_id.id) for stock_move_invoice_line_id in invoice_line.stock_move_invoice_line_ids]})
                     o_line.update(
                         invoice_line._convert_to_write(invoice_line._cache))
                     del o_line['invoice_id']

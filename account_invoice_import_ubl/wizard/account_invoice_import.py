@@ -124,7 +124,7 @@ class AccountInvoiceImport(models.TransientModel):
             'name': name,
             'taxes': taxes,
             }
-        return vals
+        return vals, total_line_lines
 
     @api.model
     def parse_ubl_invoice(self, xml_root):
@@ -191,7 +191,7 @@ class AccountInvoiceImport(models.TransientModel):
         iban_xpath = bic_xpath = False
         if payment_type_code and payment_type_code[0].text == '31':
             iban_xpath = xml_root.xpath(
-                "//cac:PayeeFinancialAccount/cbc:ID[@schemeID='IBAN']",
+                "//cac:PayeeFinancialAccount/cbc:ID",
                 namespaces=namespaces)
             bic_xpath = xml_root.xpath(
                 "//cac:PayeeFinancialAccount"
@@ -205,7 +205,7 @@ class AccountInvoiceImport(models.TransientModel):
         inv_line_xpath = xml_root.xpath(
             "/inv:Invoice/cac:InvoiceLine", namespaces=namespaces)
         for iline in inv_line_xpath:
-            line_vals = self.parse_ubl_invoice_line(
+            line_vals, total_line_lines = self.parse_ubl_invoice_line(
                 iline, sign, total_line_lines, namespaces)
             if line_vals is False:
                 continue

@@ -220,7 +220,7 @@ class AccountInvoiceImport(models.TransientModel):
                 elif config.invoice_line_method == 'nline_no_product':
                     taxes = bdio._match_taxes(
                         line.get('taxes'), parsed_inv['chatter_msg'])
-                    il_vals['invoice_line_tax_id'] = taxes.ids
+                    il_vals['invoice_line_tax_id'] = taxes.ids  # BOLE MODIFIED!, old val: taxes.ids
                 if line.get('name'):
                     il_vals['name'] = line['name']
                 elif not il_vals.get('name'):
@@ -439,9 +439,13 @@ class AccountInvoiceImport(models.TransientModel):
                     parsed_inv['amount_total'],
                     precision_digits=prec)):
             if not invoice.tax_line:
-                raise UserError(_(
+                logger.info(_(
                     "The total amount is different from the untaxed amount, "
                     "but no tax has been configured !"))
+                return
+                # raise UserError(_(
+                #     "The total amount is different from the untaxed amount, "
+                #     "but no tax has been configured !"))
             initial_tax_amount = invoice.tax_line[0].amount
             tax_amount = parsed_inv['amount_total'] -\
                 parsed_inv['amount_untaxed']

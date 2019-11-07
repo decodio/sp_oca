@@ -221,7 +221,7 @@ class AccountInvoiceImport(models.TransientModel):
 
         res = {
             'partner': supplier_dict,
-            'invoice_number': inv_number_xpath[0].text,
+            'invoice_number': inv_number_xpath[0].text,  #BOLE: from UBL import _ supplier_invoice_number??
             'date': fields.Date.to_string(date_dt),
             'date_due': date_due_str,
             'currency': {'iso': currency_iso_xpath[0].text},

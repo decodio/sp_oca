@@ -94,9 +94,9 @@ class MisBuilderXls(report_xls):
             ws.write(row_pos, col, line['kpi_name'], self.mis_rh_cell_style)
             for value in line['cols']:
                 col += 1
-                num_format_str = '#'
+                num_format_str = '#,##'
                 if value.get('dp'):
-                    num_format_str += '.'
+                    num_format_str += '0.'
                     num_format_str += '0' * int(value['dp'])
                 if value.get('prefix'):
                     num_format_str = '"%s"' % value['prefix'] + num_format_str

@@ -24,16 +24,15 @@ class AccountInvoice(models.Model):
         doc_id.text = self.number
         issue_date = etree.SubElement(parent_node, ns['cbc'] + 'IssueDate')
         issue_date.text = self.date_invoice
-        if self.comment:
-            note = etree.SubElement(parent_node, ns['cbc'] + 'Note')
-            note.text = self.comment
         type_code = etree.SubElement(
             parent_node, ns['cbc'] + 'InvoiceTypeCode')
         if self.type == 'out_invoice':
             type_code.text = '380'
         elif self.type == 'out_refund':
             type_code.text = '381'
-
+        if self.comment:
+            note = etree.SubElement(parent_node, ns['cbc'] + 'Note')
+            note.text = self.comment
         doc_currency = etree.SubElement(
             parent_node, ns['cbc'] + 'DocumentCurrencyCode')
         doc_currency.text = self.currency_id.name

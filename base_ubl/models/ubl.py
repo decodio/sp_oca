@@ -375,19 +375,19 @@ class BaseUbl(models.AbstractModel):
             # I'm not 100% sure, but it seems that ClassifiedTaxCategory
             # contains the taxes of the product without taking into
             # account the fiscal position
-            if type == 'sale':
-                taxes = product.taxes_id
-            else:
-                taxes = product.supplier_taxes_id
-            if taxes:
-                for tax in taxes:
-                    if tax.company_id != self.env.user.company_id:
-                        # Multi company case when not all companies need to have
-                        # classified taxes
-                        continue
-                    self._ubl_add_tax_category(
-                        tax, item, ns, node_name='ClassifiedTaxCategory',
-                        version=version)
+            # if type == 'sale':
+            #     taxes = product.taxes_id
+            # else:
+            #     taxes = product.supplier_taxes_id
+            # if taxes:
+            #     for tax in taxes:
+            #         if tax.company_id != self.env.user.company_id:
+            #             # Multi company case when not all companies need to have
+            #             # classified taxes
+            #             continue
+            #         self._ubl_add_tax_category(
+            #             tax, item, ns, node_name='ClassifiedTaxCategory',
+            #             version=version)
             for attribute_value in product.attribute_value_ids:
                 item_property = etree.SubElement(
                     item, ns['cac'] + 'AdditionalItemProperty')

@@ -151,7 +151,7 @@ class BaseUbl(models.AbstractModel):
             registration_name.text = commercial_partner.name
             company_id = etree.SubElement(
                 party_tax_scheme, ns['cbc'] + 'CompanyID')
-            company_id.text = commercial_partner.sanitized_vat
+            company_id.text = commercial_partner.sanitized_vat or commercial_partner.vat
             tax_scheme_dict = self._ubl_get_tax_scheme_dict_from_partner(
                 commercial_partner)
             self._ubl_add_tax_scheme(
@@ -419,7 +419,7 @@ class BaseUbl(models.AbstractModel):
                 tax_subtotal, ns['cbc'] + 'Percent')
             percent.text = unicode(
                 float_round(tax.amount * 100, precision_digits=2))
-        self._ubl_add_tax_category(tax, tax_subtotal, ns, version=version)
+         self._ubl_add_tax_category(tax, tax_subtotal, ns, version=version)
 
     @api.model
     def _ubl_add_tax_category(

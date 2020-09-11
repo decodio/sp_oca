@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# © 2016 ONESTEiN BV (<http://www.onestein.eu>)
+# Copyright 2016 Onestein (<http://www.onestein.eu>)
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl.html).
 
 {
@@ -14,7 +14,7 @@ Address Consolidation
 Saves the originally used address information for Sale, Stock and Invoicing, and
 displays these on the related reports.
     """,
-    'author': "ONESTEiN BV",
+    'author': "Onestein",
     'website': "http://www.onestein.eu",
     'category': 'Sales',
     'version': '1.1.1',
@@ -27,7 +27,7 @@ displays these on the related reports.
     'data': [
         'views/account_invoice_view.xml',
         'views/sale_view.xml',
-        'stock_view.xml',
+        'views/stock_view.xml',
         'views/report_invoice.xml',
         'views/report_saleorder.xml',
         'views/report_stockpicking.xml',

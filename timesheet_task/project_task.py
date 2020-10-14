@@ -57,7 +57,7 @@ class ProjectTask(orm.Model):
             res[task.id]['delay_hours'] = res[task.id][
                 'total_hours'] - task.planned_hours
             res[task.id]['progress'] = 0.0
-            if (task.remaining_hours + hours.get(task.id, 0.0)):
+            if res[task.id]['total_hours']:
                 res[task.id]['progress'] = round(
                     100.0 * hours.get(task.id, 0.0) /
                     res[task.id]['total_hours'], 2)

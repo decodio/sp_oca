@@ -328,9 +328,10 @@ class AccountAnalyticLine(orm.Model):
                                                        context=context)
 
     def write(self, cr, uid, ids, vals, context=None):
-        self._set_remaining_hours_write(cr, uid, ids, vals, context=context)
-        return super(AccountAnalyticLine, self).write(cr, uid, ids, vals,
+        res = super(AccountAnalyticLine, self).write(cr, uid, ids, vals,
                                                       context=context)
+        self._set_remaining_hours_write(cr, uid, ids, vals, context=context)
+        return res
 
     def unlink(self, cr, uid, ids, context=None):
         self._set_remaining_hours_unlink(cr, uid, ids, context)

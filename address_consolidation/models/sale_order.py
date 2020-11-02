@@ -130,7 +130,7 @@ class SaleOrder(models.Model):
             vals = self._prepare_procurement_group(order, context=context)
             if not order.procurement_group_id:
                 group = self.env['procurement.group'].create(vals)
-                order.write({'procurement_group_id': group.id}, context=context)
+                order.write({'procurement_group_id': group.id})
 
             for line in order.order_line:
                 # Try to fix exception procurement (possible when after a shipping exception
@@ -147,7 +147,9 @@ class SaleOrder(models.Model):
                         continue
                     vals = self._prepare_order_line_procurement(order=order, line=line, group_id=group.id,
                                                                 context=context)
-                    proc_id = procurement_obj.create(vals)
+                    ctx = context.copy()
+                    ctx['procurement_autorun_defer'] = True
+                    proc_id = procurement_obj.with_context(ctx).create(vals)
                     proc_ids.append(proc_id)
             # Confirm procurement order such that rules will be applied on it
             # note that the workflow normally ensure proc_ids isn't an empty list

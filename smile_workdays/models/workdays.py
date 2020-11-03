@@ -87,6 +87,7 @@ class ResCompany(models.Model):
         date_to_check = clean_date(date_to_check)
         if self.inherit_dayoff:
             return self.parent_id.is_day_off(date_to_check)
+        print bool(self.dayoff_ids.filtered(lambda dayoff: dayoff.date == date_to_check.strftime('%Y-%m-%d')))
         return bool(self.dayoff_ids.filtered(lambda dayoff: dayoff.date == date_to_check.strftime('%Y-%m-%d')))
 
     @api.multi

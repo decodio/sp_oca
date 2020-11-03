@@ -110,7 +110,7 @@ class SaleOrder(models.Model):
         return res
 
     @api.model
-    def action_ship_create(self, context=None):
+    def action_ship_create(self):
         """Override method to pass sale_id to stock_move._picking_assign() in order to pass historical
         values when creating picking. Goes through:
         procurement_order._run(),
@@ -127,7 +127,7 @@ class SaleOrder(models.Model):
         sale_line_obj = self.env['sale.order.line']
         for order in self:
             proc_ids = []
-            vals = self._prepare_procurement_group(order, context=context)
+            vals = order._prepare_procurement_group(order)
             if not order.procurement_group_id:
                 group = self.env['procurement.group'].create(vals)
                 order.write({'procurement_group_id': group.id})
@@ -135,26 +135,24 @@ class SaleOrder(models.Model):
             for line in order.order_line:
                 # Try to fix exception procurement (possible when after a shipping exception
                 # the user choose to recreate)
-                sale_line_rec = sale_line_obj.browse(line.id)
                 if line.procurement_ids:
                     # first check them to see if they are in exception or not (one of the related moves is cancelled)
                     procurement_obj.check([x.id for x in line.procurement_ids if x.state not in ['cancel', 'done']])
                     line.refresh()
                     # run again procurement that are in exception in order to trigger another move
                     proc_ids += [x for x in line.procurement_ids if x.state in ('exception', 'cancel')]
-                elif sale_line_rec.need_procurement():
+                elif line.need_procurement():
                     if (line.state == 'done') or not line.product_id:
                         continue
-                    vals = self._prepare_order_line_procurement(order=order, line=line, group_id=group.id,
-                                                                context=context)
-                    ctx = context.copy()
+                    vals = order._prepare_order_line_procurement(order, line, group.id)
+                    ctx = self._context.copy()
                     ctx['procurement_autorun_defer'] = True
-                    proc_id = procurement_obj.with_context(ctx).create(vals)
-                    proc_ids.append(proc_id)
+                    proc_ids = procurement_obj.with_context(ctx).create(vals)
+                    # proc_ids.append(proc_id)
             # Confirm procurement order such that rules will be applied on it
             # note that the workflow normally ensure proc_ids isn't an empty list
-            procurement_rec = procurement_obj.browse([proc.id for proc in proc_ids])
-            procurement_rec.with_context(sale_ids=self.ids).run(autocommit=None)
+            # procurement_rec = procurement_obj.browse([proc.id for proc in proc_ids])
+            proc_ids.with_context(sale_ids=self.ids).run(autocommit=None)
 
             # if shipping was in exception and the user choose to recreate the delivery order,
             # write the new status of SO

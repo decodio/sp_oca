@@ -40,14 +40,15 @@ class StockPicking(models.Model):
         No correct way to get the picking record, so override _invoice_create_line() below.
         """
         res = super(StockPicking, self)._get_invoice_vals(key, inv_type, journal_id, move)
-        res.update({
-            'invoice_partner_street': picking.shipping_partner_street,
-            'invoice_partner_street2': picking.shipping_partner_street2,
-            'invoice_partner_zip': picking.shipping_partner_zip,
-            'invoice_partner_city': picking.shipping_partner_city,
-            'invoice_partner_state_id': picking.shipping_partner_state_id.id,
-            'invoice_partner_country_id': picking.shipping_partner_country_id.id,
-        })
+        if picking:
+            res.update({
+                'invoice_partner_street': picking.shipping_partner_street,
+                'invoice_partner_street2': picking.shipping_partner_street2,
+                'invoice_partner_zip': picking.shipping_partner_zip,
+                'invoice_partner_city': picking.shipping_partner_city,
+                'invoice_partner_state_id': picking.shipping_partner_state_id.id,
+                'invoice_partner_country_id': picking.shipping_partner_country_id.id,
+            })
         return res
 
     @api.model

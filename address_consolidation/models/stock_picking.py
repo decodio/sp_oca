@@ -67,14 +67,14 @@ class StockPicking(models.Model):
             if key not in invoices:
                 # Get account and payment terms
                 invoice_vals = self._get_invoice_vals(key, inv_type, journal_id, move, picking=move.picking_id)
-                invoice_id = self._create_invoice_from_picking(move.picking_id, invoice_vals, context=context)
+                invoice_id = self._create_invoice_from_picking(move.picking_id, invoice_vals)
                 invoices[key] = invoice_id
 
-            invoice_line_vals = move_obj._get_invoice_line_vals(move, partner, inv_type, context=context)
+            invoice_line_vals = move_obj._get_invoice_line_vals(move, partner, inv_type)
             invoice_line_vals['invoice_id'] = invoices[key]
             invoice_line_vals['origin'] = origin
 
-            move_obj._create_invoice_line_from_vals(move, invoice_line_vals, context=context)
+            move_obj._create_invoice_line_from_vals(move, invoice_line_vals)
             move.write({'invoice_state': 'invoiced'})
 
         invoice_recs = invoice_obj.browse(invoices.values())

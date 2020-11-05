@@ -52,7 +52,7 @@ class StockPicking(models.Model):
         return res
 
     @api.model
-    def _invoice_create_line(self, moves, journal_id, inv_type='out_invoice', context=None):
+    def _invoice_create_line(self, moves, journal_id, inv_type='out_invoice'):
         invoice_obj = self.env['account.invoice']
         move_obj = self.env['stock.move']
         invoices = {}

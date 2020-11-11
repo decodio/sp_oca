@@ -40,6 +40,7 @@ class StockPicking(models.Model):
         No correct way to get the picking record, so override _invoice_create_line() below.
         """
         res = super(StockPicking, self)._get_invoice_vals(key, inv_type, journal_id, move)
+        picking = move.picking_id
         if picking:
             res.update({
                 'invoice_partner_street': picking.shipping_partner_street,

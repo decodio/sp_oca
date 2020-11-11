@@ -144,7 +144,7 @@ class SaleOrder(models.Model):
                 elif line.need_procurement():
                     if (line.state == 'done') or not line.product_id:
                         continue
-                    vals = order._prepare_order_line_procurement(order, line, group.id)
+                    vals = order._prepare_order_line_procurement(order, line, group_id=order.procurement_group_id.id)
                     ctx = self._context.copy()
                     ctx['procurement_autorun_defer'] = True
                     proc_ids = procurement_obj.with_context(ctx).create(vals)

@@ -103,22 +103,23 @@ class ResCompany(models.Model):
         day_mapping = {0: 'mon', 1: 'tue', 2: 'wed', 3: 'thu', 4: 'fri', 5: 'sat', 6: 'sun'}
         if getattr(self, day_mapping[date_to_check.weekday()]):
             return False
-        if self.is_day_off(date_to_check):
-            return False
-        if self.country_id and self.country_id.is_holiday(date_to_check):
-            return False
+        if not self._context.get('include_holidays', False):
+            if self.is_day_off(date_to_check):
+                return False
+            if self.country_id and self.country_id.is_holiday(date_to_check):
+                return False
         return True
 
-    @tools.cache(skiparg=3)
-    def _cached_is_working_day(self, cr, uid, company_id, date_to_check):
-        return self.browse(cr, uid, company_id)._is_working_day(date_to_check)
+    @tools.cache()
+    def _cached_is_working_day(self, cr, uid, company_id, date_to_check, context):
+        return self.browse(cr, uid, company_id, context=context)._is_working_day(date_to_check)
 
     def clear_is_working_day_cache(self):
         self._cached_is_working_day.clear_cache(self)
 
     @api.multi
     def is_working_day(self, date_to_check):
-        return self._model._cached_is_working_day(self._cr, self._uid, self.env.user.company_id.id, date_to_check)
+        return self._model._cached_is_working_day(self._cr, self._uid, self.env.user.company_id.id, date_to_check, self._context)
 
     @api.multi
     def get_working_days_delta(self, start_date, end_date):

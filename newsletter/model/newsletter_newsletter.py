@@ -92,17 +92,18 @@ class newsletter_newsletter(models.Model):
         })
         return {'type': 'ir.actions.act_window_close'}
 
-    @api.one
-    def _cronjob_send_newsletter(self):
-        model = self.env[self.type_id.model.model]
+    @api.model
+    def _cronjob_send_newsletter(self, ids):
+        newsletter = self.browse(ids)
+        model = self.env[newsletter.type_id.model.model]
 
         step = 100
         offset = 0
-        search_domain = safe_eval(self.type_id.domain)
+        search_domain = safe_eval(newsletter.type_id.domain)
 
-        _logger.info('sending newsletter %s', self.subject)
+        _logger.info('sending newsletter %s', newsletter.subject)
         _logger.debug(
-            'searching for %s %s', self.type_id.model.model, search_domain)
+            'searching for %s %s', newsletter.type_id.model.model, search_domain)
 
         while True:
             records = model.search(search_domain, offset=offset, limit=step)
@@ -110,12 +111,12 @@ class newsletter_newsletter(models.Model):
                 break
             for record in records:
                 try:
-                    self._do_send_newsletter(record)
+                    newsletter._do_send_newsletter(record)
                 except Exception as e:
                     _logger.error(e)
             offset += step
-        _logger.info('sending newsletter %s finished', self.subject)
-        self.write({'state': 'sent'})
+        _logger.info('sending newsletter %s finished', newsletter.subject)
+        newsletter.write({'state': 'sent'})
 
     @api.one
     def _do_send_newsletter(self, record, context=None):

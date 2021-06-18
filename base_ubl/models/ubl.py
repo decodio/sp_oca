@@ -417,8 +417,7 @@ class BaseUbl(models.AbstractModel):
                 not float_is_zero(tax.amount, precision_digits=prec+3)):
             percent = etree.SubElement(
                 tax_subtotal, ns['cbc'] + 'Percent')
-            percent.text = unicode(
-                float_round(tax.amount * 100, precision_digits=2))
+            percent.text = unicode(float_round(tax.amount * 100, precision_digits=2))
         self._ubl_add_tax_category(tax, tax_subtotal, ns, version=version)
 
     @api.model

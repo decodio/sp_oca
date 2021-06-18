@@ -210,7 +210,8 @@ class account_compensation(osv.osv):
             res[key].update(vals[key])
         return res
 
-    def recompute_compensation_lines(self, cr, uid, ids, partner_id, journal_id, currency_id, date, context=None):
+    def recompute_compensation_lines(self, cr, uid, ids, partner_id, journal_id,
+                                     currency_id, date, context=None):
         """
         Returns a dict that contains new values and context
 
@@ -268,8 +269,11 @@ class account_compensation(osv.osv):
         total_credit = 0.0
         total_debit = 0.0
         account_type = None
-        ids = move_line_pool.search(cr, uid, [('state', '=', 'valid'), ('account_id.reconcile', '=', True), (
-            'reconcile_id', '=', False), ('partner_id', '=', partner_id)], context=context)
+        ids = move_line_pool.search(cr, uid, [
+            ('state', '=', 'valid'),
+            ('account_id.reconcile', '=', True),
+            ('reconcile_id', '=', False),
+            ('partner_id', '=', partner_id)], context=context)
         company_currency = journal.company_id.currency_id.id
         move_lines_found = []
 
@@ -291,10 +295,14 @@ class account_compensation(osv.osv):
                 # always use the amount booked in the company currency as the
                 # basis of the conversion into the compensation currency
                 amount_original = currency_pool.compute(
-                    cr, uid, company_currency, currency_id, line.credit or line.debit or 0.0, context=context_multi_currency)
-                amount_unreconciled = currency_pool.compute(cr, uid, company_currency, currency_id, abs(
+                    cr, uid, company_currency, currency_id,
+                    line.credit or line.debit or 0.0,
+                    context=context_multi_currency)
+                amount_unreconciled = currency_pool.compute(
+                    cr, uid, company_currency, currency_id, abs(
                     line.amount_residual), context=context_multi_currency)
-            line_currency_id = line.currency_id and line.currency_id.id or company_currency
+            line_currency_id = line.currency_id and line.currency_id.id or \
+                               company_currency
             rs = {
                 'name': line.move_id.name,
                 'type': line.credit and 'dr' or 'cr',
@@ -346,7 +354,6 @@ class account_compensation(osv.osv):
             return False
         journal_pool = self.pool.get('account.journal')
         journal = journal_pool.browse(cr, uid, journal_id, context=context)
-
         vals = {'value': {}}
         if journal.currency:
             currency_id = journal.currency.id
@@ -611,7 +618,14 @@ class account_compensation(osv.osv):
             # create one move line per compensation line where amount is not 0.0
             # AND (second part of the clause) only if the original move line
             # was not having debit = credit = 0 (which is a legal value)
-            if not line.amount and not (line.move_line_id and not float_compare(line.move_line_id.debit, line.move_line_id.credit, precision_digits=prec) and not float_compare(line.move_line_id.debit, 0.0, precision_digits=prec)):
+            if not line.amount and \
+                not (line.move_line_id and \
+                not float_compare(
+                    line.move_line_id.debit,
+                    line.move_line_id.credit,
+                    precision_digits=prec) and \
+                     not float_compare(line.move_line_id.debit, 0.0,
+                                       precision_digits=prec)):
                 continue
             # convert the amount set on the compensation line into the currency of the compensation's company
             # this calls res_curreny.compute() with the right context, so that

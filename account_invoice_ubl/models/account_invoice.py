@@ -218,7 +218,8 @@ class AccountInvoice(models.Model):
                 raise UserError(_(
                     "The tax code '%s' is not linked to a tax.")
                     % tline.base_code_id.name)
-            tax = taxes[0]
+            tax = taxes[0] # BOLE: ovo nije uvijek točno!!!
+
             self._ubl_add_tax_subtotal(
                 tline.base, tline.amount, tax, cur_name, tax_total_node, ns,
                 version=version)

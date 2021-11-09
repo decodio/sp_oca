@@ -145,7 +145,7 @@ class BankingExportPain(models.AbstractModel):
             group_header_1_0, 'MsgId')
         message_identification_1_1.text = self._prepare_field(
             'Message Identification',
-            'self.payment_order_ids[0].reference',
+            'self.payment_order_ids[0].reference',  # Croatia - filename 'UN.YYY
             {'self': self}, 35, gen_args=gen_args)
         creation_date_time_1_2 = etree.SubElement(group_header_1_0, 'CreDtTm')
         creation_date_time_1_2.text = datetime.strftime(

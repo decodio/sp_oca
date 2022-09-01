@@ -48,6 +48,11 @@ class SuperCalendar(models.Model):
         required=True,
         readonly=True,
     )
+    date_stop = fields.Datetime(
+        string='Stop date',
+        required=False,
+        readonly=True,
+    )
     duration = fields.Float(
         string='Duration',
         readonly=True,

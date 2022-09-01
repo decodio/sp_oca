@@ -95,6 +95,7 @@
                         <group>
                             <field name="name"/>
                             <field name="date_start"/>
+                            <field name="date_stop"/>
                             <field name="duration"/>
                             <field name="user_id"/>
                             <field name="configurator_id"/>
@@ -111,7 +112,7 @@
             <field name="model">super.calendar</field>
             <field name="arch" type="xml">
                 <calendar string="Calendar" color="model_id"
-                          date_start="date_start" date_delay="duration"
+                          date_start="date_start" date_stop="date_stop" date_delay="duration"
                           quick_add="false">
                     <field name="name"/>
                 </calendar>

@@ -124,7 +124,11 @@ class SuperCalendarConfigurator(models.Model):
                 date_start = datetime.strptime(
                     cur_rec[f_date_start], date_format
                 )
-
+                date_stop = False
+                if f_date_stop and cur_rec[f_date_stop]:
+                    date_stop = datetime.strptime(
+                        cur_rec[f_date_stop], date_format
+                    )
                 if (not line.duration_field_id and
                         line.date_stop_field_id and
                         cur_rec[f_date_start] and
@@ -172,6 +176,7 @@ class SuperCalendarConfigurator(models.Model):
                 super_calendar_values = {
                     'name': name,
                     'date_start': date_start,
+                    'date_stop': date_stop,
                     'duration': duration,
                     'user_id': (f_user and cur_rec[f_user].id),
                     'configurator_id': self.id,

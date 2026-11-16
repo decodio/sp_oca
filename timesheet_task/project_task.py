@@ -272,41 +272,54 @@ class AccountAnalyticLine(orm.Model):
             'UPDATE project_task '
             'SET remaining_hours=remaining_hours - %s '
             'WHERE id=%s', (hours, vals['task_id']))
+        self.pool['project.task'].invalidate_cache(
+            cr, uid, ['remaining_hours'], [vals['task_id']], context=context)
         self._trigger_projects(cr, uid, [vals['task_id']], context=context)
         return vals
 
     def _set_remaining_hours_write(self, cr, uid, ids, vals, context=None):
+        """Adjust the remaining hours of the tasks linked to the lines.
+
+        Must be called BEFORE ``super().write()``: the lines still hold
+        their old ``task_id`` / ``unit_amount`` which are needed to undo
+        the previous deduction. Being called before the write also makes
+        sure the stored hour indicators of the task (total_hours, progress,
+        ...) recomputed during the write see the updated remaining hours.
+
+        Returns the ids of the tasks whose remaining hours changed, so the
+        caller can trigger the project recompute once the write is done.
+        """
         if isinstance(ids, (int, long)):
             ids = [ids]
-        for line in self.browse(cr, uid, ids):
+        if 'task_id' not in vals and 'unit_amount' not in vals:
+            return []
+        task_ids = set()
+        for line in self.browse(cr, uid, ids, context=context):
             # in OpenERP if we set a value to nil vals become False
             old_task_id = line.task_id and line.task_id.id or None
-            # if no task_id in vals we assume it is equal to old
-            new_task_id = vals.get('task_id', old_task_id)
-            # we look if value has changed
-            if (new_task_id != old_task_id) and old_task_id:
-                self._set_remaining_hours_unlink(cr, uid, [line.id], context)
-                if new_task_id:
-                    data = {'task_id': new_task_id,
-                            'to_invoice': vals.get('to_invoice',
-                                                   line.to_invoice.id),
-                            'unit_amount': vals.get('unit_amount',
-                                                    line.unit_amount)}
-                    self._set_remaining_hours_create(cr, uid, data, context)
-                    self._trigger_projects(
-                        cr, uid, list(set([old_task_id, new_task_id])),
-                        context=context)
-                return ids
+            old_hours = line.unit_amount or 0.0
+            # if no task_id / unit_amount in vals we assume it is unchanged
+            new_task_id = vals.get('task_id', old_task_id) or None
+            new_hours = vals.get('unit_amount', old_hours) or 0.0
+            if old_task_id and old_task_id != new_task_id:
+                # give the hours back to the previous task
+                cr.execute(
+                    'UPDATE project_task '
+                    'SET remaining_hours=remaining_hours + %s '
+                    'WHERE id=%s', (old_hours, old_task_id))
+                task_ids.add(old_task_id)
+                old_hours = 0.0
             if new_task_id:
-                hours = vals.get('unit_amount', line.unit_amount)
-                old_hours = line.unit_amount if old_task_id else 0.0
                 # We can not do a write else we will have a recursion error
                 cr.execute(
                     'UPDATE project_task '
                     'SET remaining_hours=remaining_hours - %s + (%s) '
-                    'WHERE id=%s', (hours, old_hours, new_task_id))
-                self._trigger_projects(cr, uid, [new_task_id], context=context)
-        return ids
+                    'WHERE id=%s', (new_hours, old_hours, new_task_id))
+                task_ids.add(new_task_id)
+        if task_ids:
+            self.pool['project.task'].invalidate_cache(
+                cr, uid, ['remaining_hours'], list(task_ids), context=context)
+        return list(task_ids)
 
     def _set_remaining_hours_unlink(self, cr, uid, ids, context=None):
         if isinstance(ids, (int, long)):
@@ -319,6 +332,9 @@ class AccountAnalyticLine(orm.Model):
                 'UPDATE project_task '
                 'SET remaining_hours=remaining_hours + %s '
                 'WHERE id=%s', (hours, line.task_id.id))
+            self.pool['project.task'].invalidate_cache(
+                cr, uid, ['remaining_hours'], [line.task_id.id],
+                context=context)
         return ids
 
     def create(self, cr, uid, vals, context=None):
@@ -328,9 +344,16 @@ class AccountAnalyticLine(orm.Model):
                                                        context=context)
 
     def write(self, cr, uid, ids, vals, context=None):
+        # Remaining hours are adjusted BEFORE the write (old task / hours
+        # are still available, stored indicators recomputed by the write
+        # see the new remaining hours), the project recompute is triggered
+        # AFTER the write so that it works with the new line values.
+        task_ids = self._set_remaining_hours_write(
+            cr, uid, ids, vals, context=context)
         res = super(AccountAnalyticLine, self).write(cr, uid, ids, vals,
                                                       context=context)
-        self._set_remaining_hours_write(cr, uid, ids, vals, context=context)
+        if task_ids:
+            self._trigger_projects(cr, uid, task_ids, context=context)
         return res
 
     def unlink(self, cr, uid, ids, context=None):
